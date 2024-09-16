@@ -4,8 +4,8 @@ image: C:\Users\kanda\Downloads\HuntingtonPhoto.jpg
 toc: false
 about: 
   template: jolla
-  image-shape: round
-  image-width: 17em
+  image-shape: rectangle
+  image-width: 1.73MB
   links:
   - text: Github
     href: https://github.com/Kandacelou/Proj1
