@@ -1,6 +1,6 @@
 ---
 title: "Kandace Loualhati"
-image: Downloads/HuntingtonPhoto.jpg
+image: C:\Users\kanda\Downloads/HuntingtonPhoto.jpg
 toc: false
 about: 
   template: jolla
