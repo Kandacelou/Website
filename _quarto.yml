@@ -10,6 +10,12 @@ website:
         text: Home
       - about.qmd
       - dataviz.qmd
+      title: "State Tuition"
+      description: \|
+      Analysis of US average tuition by state data from TidyTuesday
+      author: Tom Mock
+      date: April 4th, 2018
+      format: html
       menu: 
       - text: 
 
