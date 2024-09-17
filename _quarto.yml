@@ -4,16 +4,11 @@ project:
 
 website:
   title: "Kandace Loualhati"
-    navbar:
+  navbar:
     left:
       - href: index.qmd
         text: "About Me"
       - about.qmd
-        text: "Data Viz"
-        menu: 
-          - text: "Average Tuition"
-            href: averagetuition.html
-          - text: "Something Else"
 
 format:
   html:

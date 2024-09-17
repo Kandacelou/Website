@@ -1,6 +1,6 @@
 ---
 title: "Kandace Loualhati"
-image: C:\Users\kanda\OneDrive\Desktop\DS02\Proj1\Proj1\websitephoto.jpg
+image: websitephoto.jpg
 toc: false
 about: 
   template: jolla
