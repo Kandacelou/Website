@@ -4,8 +4,8 @@ image: websitephoto.jpg
 toc: false
 about: 
   template: jolla
-  image-shape: rectangle
-  image-width: 362 KB
+  image-shape: round
+  image-width: 17em
   links:
   - text: Github
     href: https://github.com/Kandacelou/Proj1

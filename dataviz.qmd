@@ -1,12 +1,8 @@
 ---
-title: "Data Viz"
----
-
----
-title: "State Tuition"
-description: \|
-Analysis of US average tuition by state data from TidyTuesday
-author: Tom Mock
-date: April 4th, 2018
+title: "California Fire Damage"
+description: |
+  Analysis of calfire_damage data from TidyTuesday
+author: Thomas Mock
+date: August 21, 2018
 format: html
 ---

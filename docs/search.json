@@ -9,8 +9,15 @@
   {
     "objectID": "about.html",
     "href": "about.html",
-    "title": "About",
+    "title": "About Me",
     "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2"
+    "text": "Hi! My name is Kandace Loualhati (Loo-uhl-haw-tee). I’m currently a second year at Pomona College who’s intending on double majoring in Politics and Cognitive Science (with a computational concentration). I’m also a coffee addict (whoops!), an avid adventurer, and have my Seal of Biliteracy in American Sign Language :)"
+  },
+  {
+    "objectID": "dataviz.html",
+    "href": "dataviz.html",
+    "title": "California Fire Damage",
+    "section": "",
+    "text": "’’’ ggplot(calfire_damage, aes(x = year, y = structures)) + geom_point(color = “hotpink”) + labs( x = “Year”, y = “Number of Structures Destroyed”, title = “California Fire Damage”,"
   }
 ]
