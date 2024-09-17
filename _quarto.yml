@@ -10,7 +10,6 @@ website:
         text: "About Me"
       - about.qmd
         text: "Data Viz"
-      - dataviz.qmd
         menu: 
           - text: "Average Tuition"
             href: averagetuition.html
