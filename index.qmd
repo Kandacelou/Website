@@ -1,11 +1,11 @@
 ---
 title: "Kandace Loualhati"
-image: C:\Users\kanda\Downloads\HuntingtonPhoto.jpg
+image: C:\Users\kanda\OneDrive\Desktop\DS02\Proj1\Proj1\websitephoto
 toc: false
 about: 
   template: jolla
   image-shape: rectangle
-  image-width: 1.73MB
+  image-width: 362 KB
   links:
   - text: Github
     href: https://github.com/Kandacelou/Proj1
