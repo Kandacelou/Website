@@ -5,8 +5,6 @@ description: |
 author: Thomas Mock
 date: August 21, 2018
 format: html
-links:
-  - text: https://github.com/rfordatascience/tidytuesday/tree/master/data/2018/2018-08-21
 ---
 
 ![](CalFireDamage.png)
