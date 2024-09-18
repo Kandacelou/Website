@@ -6,10 +6,14 @@ website:
   title: "Kandace Loualhati"
   navbar:
     left:
-      - href: index.qmd
-        text: "About Me"
-      - href: dataviz.qmd
-        text: "Data Viz"
+      - text: "About Me"
+        href: index.qmd
+      - text: "Data Viz"
+        menu: 
+          - text: "California Fire Damage"
+            href: calfiredamage.qmd
+          - text: "Employed Women"
+            href: employedwomen.qmd
 
 format:
   html:

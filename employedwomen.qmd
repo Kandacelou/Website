@@ -1,0 +1,13 @@
+---
+title: "Employed Women"
+description: |
+  Analysis of women employed full-time data from TidyTuesday
+author: Thomas Mock
+date: March 5, 2019
+format: html
+links:
+  - text: "Employed_Gender"
+    href: https://github.com/rfordatascience/tidytuesday/blob/master/data/2019/2019-03-05/employed_gender.csv
+---
+
+![](EmployedWomen.png)
