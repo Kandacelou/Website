@@ -12,5 +12,19 @@
     "title": "About Me",
     "section": "",
     "text": "Hi! My name is Kandace Loualhati (Loo-uhl-haw-tee). I’m currently a second year at Pomona College who’s intending on double majoring in Politics and Cognitive Science (with a computational concentration). I’m also a coffee addict (whoops!), an avid adventurer, and have my Seal of Biliteracy in American Sign Language :)"
+  },
+  {
+    "objectID": "employedwomen.html",
+    "href": "employedwomen.html",
+    "title": "Employed Women",
+    "section": "",
+    "text": "library(tidyverse)\nlibrary(readr)\nemployed_gender &lt;- read.csv(\"employed_gender.csv\")\nggplot(employed_gender, aes(x = year, y = full_time_female)) +\n  geom_point(color = \"hotpink\") +\n  labs(\n    x = \"Year\",\n    y = \"% Of Women Employed Full-Time\",\n    title = \"Women Employed Full-Time Per Year\",\n  )\n\n\n\n\n\n\n\n\nCode from: tidytuesday/data/2019/2019-03-05/employed_gender.csv at master · rfordatascience/tidytuesday (github.com)"
+  },
+  {
+    "objectID": "calfiredamage.html",
+    "href": "calfiredamage.html",
+    "title": "California Fire Damage",
+    "section": "",
+    "text": "library(tidyverse)\nlibrary(readr)\n calfire_damage &lt;- read.csv(\"calfire_damage.csv\")\nggplot(calfire_damage, aes(x = year, y = structures)) +\n  geom_point(color = \"orange\") +\n  labs(\n    x = \"Year\",\n    y = \"Numbers of Structures Destroyed\",\n    title = \"California Fire Damage Per Year\",\n  )\n\n\n\n\n\n\n\n\nCode from: tidytuesday/data/2018/2018-08-21/calfire_damage.csv at master · rfordatascience/tidytuesday (github.com)"
   }
 ]

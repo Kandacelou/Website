@@ -2,9 +2,25 @@
 title: "Employed Women"
 description: |
   Analysis of women employed full-time data from TidyTuesday
-author: Thomas Mock
-date: March 5, 2019
+author: Kandace Loualhati
+date: September 17, 2024
 format: html
+execute: 
+  warning: false
+  message: false
 ---
 
-![](EmployedWomen.png)
+```{r}
+library(tidyverse)
+library(readr)
+employed_gender <- read.csv("employed_gender.csv")
+ggplot(employed_gender, aes(x = year, y = full_time_female)) +
+  geom_point(color = "hotpink") +
+  labs(
+    x = "Year",
+    y = "% Of Women Employed Full-Time",
+    title = "Women Employed Full-Time Per Year",
+  )
+```
+
+Code from: tidytuesday/data/2019/2019-03-05/employed_gender.csv at master · rfordatascience/tidytuesday (github.com)
