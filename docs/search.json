@@ -1,8 +1,22 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Kandace Loualhati",
+    "objectID": "textanalysis.html",
+    "href": "textanalysis.html",
+    "title": "The Office Lines Analysis",
+    "section": "",
+    "text": "# load in packages\nlibrary(tidyverse)\nlibrary(readr)\nlibrary(dplyr)\nlibrary(knitr)\n\n# import data set\noffice_lines &lt;- read.csv(\"the-office_lines.csv\")\n\n# filter out Jim's lines when he says \"Pam\" in every season\nJim_lines &lt;- office_lines |&gt;\n  filter(Character == \"Jim\") |&gt;\n  filter(str_detect(Line, \"\\\\bPam[a-z]*\\\\b\")) |&gt;\n  group_by(Season, Episode_Number) |&gt;\n  summarize(n = n(), .groups = \"drop\") \n\n# plot of Jim's frequency of the word \"Pam\"\nggplot(Jim_lines, aes(x = Episode_Number, y = n, fill = Season)) +\n  geom_col() +\n  labs(\n    x = \"Episode Number\",\n    y = \"# of 'Pam' Occurrences\", \n    title = \"How Many Times Jim Said 'Pam' in 'The Office'\"\n  )\n\n\n\n\n\n\n\n\nThe Office, although heavily referred to as a “comedy,” has one of the most popular romantic couples in television sitcom history: Jim and Pam. In this analysis, I counted how many times Jim said the name “Pam” / “Pamela” per episode in every season. The graph is also color-coded by season: getting a lighter shade of blue as the seasons progress. Based on the data, Jim said the name “Pam” the most on episode 4 collectively throughout every season, and this trend would decrease the longer a season went on. Ultimately, Jim referenced “Pam” in 123 episodes throughout the course of the TV show.\n\n# detect whenever somebody laughs\nlaugh_counts &lt;- office_lines |&gt;\n  filter(str_detect\n         (str_to_lower\n           (str_trim(Line)), \"\\\\[laughing\\\\]|\\\\[laughs\\\\]\")) |&gt;\n  group_by(Episode_Number, Season) |&gt;\n  summarize(n = n()) |&gt;\n  arrange(desc(n))\n\n# create a table indicating laugh counts\nkable(laugh_counts, caption = \"Summary of Laugh Counts by Character and Episode\")\n\n\nSummary of Laugh Counts by Character and Episode\n\n\nEpisode_Number\nSeason\nn\n\n\n\n\n10\n8\n13\n\n\n18\n9\n13\n\n\n6\n1\n11\n\n\n23\n3\n11\n\n\n23\n9\n11\n\n\n5\n9\n8\n\n\n13\n7\n8\n\n\n1\n1\n7\n\n\n4\n1\n7\n\n\n16\n9\n7\n\n\n6\n6\n6\n\n\n7\n9\n6\n\n\n12\n8\n6\n\n\n14\n2\n6\n\n\n15\n5\n6\n\n\n4\n5\n5\n\n\n4\n6\n5\n\n\n4\n9\n5\n\n\n5\n8\n5\n\n\n6\n5\n5\n\n\n18\n3\n5\n\n\n19\n3\n5\n\n\n20\n8\n5\n\n\n26\n5\n5\n\n\n1\n3\n4\n\n\n1\n4\n4\n\n\n2\n2\n4\n\n\n3\n8\n4\n\n\n4\n3\n4\n\n\n5\n1\n4\n\n\n6\n7\n4\n\n\n6\n9\n4\n\n\n8\n3\n4\n\n\n8\n6\n4\n\n\n10\n3\n4\n\n\n10\n5\n4\n\n\n13\n4\n4\n\n\n13\n9\n4\n\n\n14\n7\n4\n\n\n14\n8\n4\n\n\n17\n8\n4\n\n\n19\n7\n4\n\n\n21\n7\n4\n\n\n21\n8\n4\n\n\n22\n2\n4\n\n\n24\n5\n4\n\n\n24\n8\n4\n\n\n1\n2\n3\n\n\n2\n1\n3\n\n\n2\n4\n3\n\n\n3\n2\n3\n\n\n3\n9\n3\n\n\n5\n5\n3\n\n\n6\n3\n3\n\n\n7\n2\n3\n\n\n7\n5\n3\n\n\n7\n8\n3\n\n\n8\n8\n3\n\n\n9\n2\n3\n\n\n9\n8\n3\n\n\n14\n5\n3\n\n\n15\n7\n3\n\n\n19\n9\n3\n\n\n1\n6\n2\n\n\n2\n8\n2\n\n\n3\n1\n2\n\n\n4\n7\n2\n\n\n5\n2\n2\n\n\n5\n4\n2\n\n\n7\n6\n2\n\n\n8\n5\n2\n\n\n8\n9\n2\n\n\n9\n3\n2\n\n\n9\n4\n2\n\n\n9\n6\n2\n\n\n9\n7\n2\n\n\n10\n2\n2\n\n\n10\n7\n2\n\n\n11\n7\n2\n\n\n12\n4\n2\n\n\n12\n9\n2\n\n\n13\n2\n2\n\n\n13\n6\n2\n\n\n13\n8\n2\n\n\n14\n4\n2\n\n\n14\n9\n2\n\n\n15\n8\n2\n\n\n16\n3\n2\n\n\n16\n7\n2\n\n\n16\n8\n2\n\n\n17\n3\n2\n\n\n17\n6\n2\n\n\n18\n2\n2\n\n\n18\n7\n2\n\n\n19\n2\n2\n\n\n19\n6\n2\n\n\n20\n2\n2\n\n\n20\n7\n2\n\n\n21\n3\n2\n\n\n22\n3\n2\n\n\n22\n7\n2\n\n\n23\n5\n2\n\n\n24\n7\n2\n\n\n1\n5\n1\n\n\n2\n3\n1\n\n\n2\n9\n1\n\n\n3\n3\n1\n\n\n3\n6\n1\n\n\n4\n2\n1\n\n\n4\n4\n1\n\n\n4\n8\n1\n\n\n5\n3\n1\n\n\n5\n7\n1\n\n\n6\n4\n1\n\n\n7\n7\n1\n\n\n8\n2\n1\n\n\n9\n5\n1\n\n\n10\n6\n1\n\n\n11\n3\n1\n\n\n11\n4\n1\n\n\n11\n6\n1\n\n\n11\n8\n1\n\n\n11\n9\n1\n\n\n12\n2\n1\n\n\n12\n6\n1\n\n\n12\n7\n1\n\n\n13\n5\n1\n\n\n15\n2\n1\n\n\n16\n5\n1\n\n\n17\n2\n1\n\n\n18\n6\n1\n\n\n18\n8\n1\n\n\n19\n5\n1\n\n\n19\n8\n1\n\n\n20\n3\n1\n\n\n20\n5\n1\n\n\n21\n2\n1\n\n\n21\n6\n1\n\n\n22\n6\n1\n\n\n23\n8\n1"
+  },
+  {
+    "objectID": "employedwomen.html",
+    "href": "employedwomen.html",
+    "title": "Employed Women",
+    "section": "",
+    "text": "library(tidyverse)\nlibrary(readr)\nemployed_gender &lt;- read.csv(\"employed_gender.csv\")\nggplot(employed_gender, aes(x = year, y = full_time_female)) +\n  geom_point(color = \"hotpink\") +\n  labs(\n    x = \"Year\",\n    y = \"% Of Women Employed Full-Time\",\n    title = \"Women Employed Full-Time Per Year\",\n  )\n\n\n\n\n\n\n\n\nCode from: tidytuesday/data/2019/2019-03-05/employed_gender.csv at master · rfordatascience/tidytuesday (github.com)"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About Me",
     "section": "",
     "text": "Hi! My name is Kandace Loualhati (Loo-uhl-haw-tee). I’m currently a second year at Pomona College who’s intending on double majoring in Politics and Cognitive Science (with a computational concentration). I’m also a coffee addict (whoops!), an avid adventurer, and have my Seal of Biliteracy in American Sign Language :)"
   },
@@ -14,17 +28,10 @@
     "text": "library(tidyverse)\nlibrary(readr)\n calfire_damage &lt;- read.csv(\"calfire_damage.csv\")\nggplot(calfire_damage, aes(x = year, y = structures)) +\n  geom_point(color = \"orange\") +\n  labs(\n    x = \"Year\",\n    y = \"Numbers of Structures Destroyed\",\n    title = \"California Fire Damage Per Year\",\n  )\n\n\n\n\n\n\n\n\nCode from: tidytuesday/data/2018/2018-08-21/calfire_damage.csv at master · rfordatascience/tidytuesday (github.com)"
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About Me",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Kandace Loualhati",
     "section": "",
     "text": "Hi! My name is Kandace Loualhati (Loo-uhl-haw-tee). I’m currently a second year at Pomona College who’s intending on double majoring in Politics and Cognitive Science (with a computational concentration). I’m also a coffee addict (whoops!), an avid adventurer, and have my Seal of Biliteracy in American Sign Language :)"
-  },
-  {
-    "objectID": "employedwomen.html",
-    "href": "employedwomen.html",
-    "title": "Employed Women",
-    "section": "",
-    "text": "library(tidyverse)\nlibrary(readr)\nemployed_gender &lt;- read.csv(\"employed_gender.csv\")\nggplot(employed_gender, aes(x = year, y = full_time_female)) +\n  geom_point(color = \"hotpink\") +\n  labs(\n    x = \"Year\",\n    y = \"% Of Women Employed Full-Time\",\n    title = \"Women Employed Full-Time Per Year\",\n  )\n\n\n\n\n\n\n\n\nCode from: tidytuesday/data/2019/2019-03-05/employed_gender.csv at master · rfordatascience/tidytuesday (github.com)"
   }
 ]
