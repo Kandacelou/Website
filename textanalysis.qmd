@@ -1,0 +1,52 @@
+---
+title: "The Office Lines Analysis"
+description: |
+  Analysis of The Office Lines data from Tidy Tuesday (https://www.kaggle.com/datasets/fabriziocominetti/the-office-lines?resource=download)
+author: Kandace Loualhati
+date: September 30, 2024
+format: html
+execute:
+  warning: false
+  message: false
+---
+
+```{r}
+# load in packages
+library(tidyverse)
+library(readr)
+library(dplyr)
+library(knitr)
+
+# import data set
+office_lines <- read.csv("the-office_lines.csv")
+
+# filter out Jim's lines when he says "Pam" in every season
+Jim_lines <- office_lines |>
+  filter(Character == "Jim") |>
+  filter(str_detect(Line, "\\bPam\\b")) |>
+  group_by(Season, Episode_Number) |>
+  summarize(n = n(), .groups = "drop")
+
+# plot of Jim's frequency of the word "Pam"
+ggplot(Jim_lines, aes(x = Episode_Number, y = n, fill = Season)) +
+  geom_col() +
+  labs(
+    x = "Episode Number",
+    y = "# of 'Pam' Occurrences", 
+    title = "How Many Times Jim Said 'Pam' in 'The Office'"
+  )
+```
+
+```{r}
+# detect whenever somebody laughs
+laugh_counts <- office_lines |>
+  filter(str_detect
+         (str_to_lower
+           (str_trim(Line)), "\\[laughing\\]|\\[laughs\\]")) |>
+  group_by(Character, Episode_Number, Season) |>
+  summarize(n = n()) |>
+  arrange(desc(n))
+
+# create a table indicating laugh counts
+kable(laugh_counts, caption = "Summary of Laugh Counts by Character and Episode")
+```

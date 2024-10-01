@@ -13,6 +13,8 @@ website:
             href: calfiredamage.qmd
           - text: "Employed Women"
             href: employedwomen.qmd
+      - text: "Text Analysis"
+        href: textanalysis.qmd
 
 format:
   html:
