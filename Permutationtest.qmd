@@ -33,11 +33,14 @@ mal_prop
 total_women <- nrow(cancer_data)
 random_tum <- function(rep, total_women) {
   result = sample(c("M", "B"), size = total_women,
-                  replace = TRUE, prob = c(0.5, 0.5))
+                 replace = TRUE, prob = c(0.5, 0.5))
   return(mean(result == "M"))
 }
 
 # repeat the function many times
+map_dbl(1:20, random_tum, total_women)
+
+# find p value 
 num_exper <- 5000
 random_map <- map_dbl(1:num_exper, random_tum, total_women)
 sum(random_map >= mal_prop) / num_exper
