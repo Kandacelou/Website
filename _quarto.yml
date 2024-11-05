@@ -15,6 +15,8 @@ website:
             href: employedwomen.qmd
       - text: "Text Analysis"
         href: textanalysis.qmd
+      - text: "Permutation Test"
+        href: Permutationtest.qmd
 
 format:
   html:
