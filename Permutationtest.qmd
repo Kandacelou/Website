@@ -1,0 +1,44 @@
+---
+title: "Permutation Test"
+description: |
+  Permutation Test of Malignant and Benign Cancer Cells For Women With Breast Cancer
+author: Kandace Loualhati
+date: November 4, 2024
+format: html
+execute:
+  warning: false
+  message: false
+---
+
+```{r}
+library(tidyverse)
+library(readr)
+library(dplyr)
+library(knitr)
+```
+
+```{r}
+set.seed(47)
+
+# import data set
+cancer_data <- read.csv("wdbc.data", header = FALSE)
+
+# find proportion of malignant tumors in women with breast cancer
+mal_prop <- cancer_data |>
+  summarize(proportion = mean(V2 == "M")) |>
+  pull()
+mal_prop
+
+# write a function to simulate women who are equally likely to have malignant and benign tumors
+total_women <- nrow(cancer_data)
+random_tum <- function(rep, total_women) {
+  result = sample(c("M", "B"), size = total_women,
+                  replace = TRUE, prob = c(0.5, 0.5))
+  return(mean(result == "M"))
+}
+
+# repeat the function many times
+num_exper <- 5000
+random_map <- map_dbl(1:num_exper, random_tum, total_women)
+sum(random_map >= mal_prop) / num_exper
+```
