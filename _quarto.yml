@@ -17,7 +17,7 @@ website:
         href: textanalysis.qmd
       - text: "Permutation Test"
         href: Permutationtest.qmd
-      - href: "SQL"
+      - text: "SQL"
         href: SQL_proj.qmd
 format:
   html:
