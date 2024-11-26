@@ -1,0 +1,73 @@
+---
+title: "SQL"
+description: |
+  Attempt at recreating a graph
+author: Kandace Loualhati
+date: November 26, 2024
+execute: 
+  warning: false
+  message: false
+---
+
+```{r}
+library(RMariaDB)
+library(DBI)
+library(dbplyr)
+library(tidyverse)
+con_wai <- dbConnect(
+  MariaDB(), host = "scidb.smith.edu",
+  user = "waiuser", password = "smith_waiDB", 
+  dbname = "wai"
+)
+Measurements <- tbl(con_wai, "Measurements")
+PI_Info <- tbl(con_wai, "PI_Info")
+Subjects <- tbl(con_wai, "Subjects")
+
+# collect(Measurements)
+```
+
+```{sql}
+#| connection: con_wai
+SHOW TABLES;
+```
+
+```{sql}
+#| connection: con_wai
+DESCRIBE Measurements;
+```
+
+```{sql}
+#| connection: con_wai
+SELECT *
+FROM Measurements
+LIMIT 0, 5;
+```
+
+```{r}
+data_set <- tbl(con_wai, sql("
+SELECT PI_Info.Year, PI_Info.Identifier,  PI_Info.AuthorsShortList, Measurements.Instrument, Measurements.Frequency, AVG(Measurements.Absorbance) AS Absorbance, COUNT(DISTINCT SubjectNumber, Ear) AS Unique_Ears
+FROM PI_Info
+JOIN Measurements ON PI_Info.Identifier = Measurements.Identifier
+WHERE PI_Info.Identifier IN ('Abur_2014', 'Feeney_2017', 'Groon_2015', 'Lewis_2015', 'Liu_2008', 'Rosowski_2012', 'Shahnaz_2006', 'Shaver_2013', 'Sun_2016', 'Voss_1994', 'Voss_2010', 'Werner_2010')
+GROUP BY Identifier, Instrument, Frequency"))
+
+ear_df <- collect(data_set)
+
+ear_df <- ear_df |>
+  mutate(Instrument = if_else(Instrument == "Other", "not commerical system", Instrument)) |>
+  mutate(legend = paste(AuthorsShortList, "(",Year,")", "N=", Unique_Ears,";", Instrument))
+
+ear_df
+```
+
+```{r}
+ggplot(ear_df, aes(x = Frequency, y = Absorbance, color = legend)) +
+  geom_line() +
+  scale_x_continuous(limits = c(200, 8000)) +
+  scale_y_continuous(limits = c(0, 1)) +
+  labs(
+    x = "Frequency (Hz)",
+    y = "Mean Absorbance",
+    title = "Mean Absorbance from each publication in WAI database"
+  )
+```

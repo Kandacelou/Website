@@ -17,6 +17,7 @@ website:
         href: textanalysis.qmd
       - text: "Permutation Test"
         href: Permutationtest.qmd
+      - href: ""
 
 format:
   html:
