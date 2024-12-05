@@ -6,6 +6,7 @@ website:
   title: "Kandace Loualhati"
   navbar:
     left:
+      - text: "About Me"
       - href: index.qmd
       - text: "Data Viz"
         menu: 

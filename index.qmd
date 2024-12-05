@@ -1,5 +1,5 @@
 ---
-title: "Kandace Loualhati"
+title: "Kandace Loualhati (Loo-uhl-haw-tee)"
 image: websitephoto.jpg
 toc: false
 about: 
@@ -8,7 +8,13 @@ about:
   image-width: 17em
   links:
   - text: Github
-    href: https://github.com/Kandacelou/Proj1
+    href: https://github.com/Kandacelou
 ---
 
-Hi! My name is Kandace Loualhati (Loo-uhl-haw-tee). I'm currently a second year at Pomona College who's intending on double majoring in Politics and Cognitive Science (with a computational concentration). I'm also a coffee addict (whoops!), an avid adventurer, and have my Seal of Biliteracy in American Sign Language :)
+About me:
+
+-   An undergraduate at Pomona College (class of 2027)
+
+-   Double majoring in Politics and Cognitive Science
+
+-   Minoring in Data Science

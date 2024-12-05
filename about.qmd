@@ -2,4 +2,12 @@
 title: "About Me"
 ---
 
-Hi! My name is Kandace Loualhati (Loo-uhl-haw-tee). I'm currently a second year at Pomona College who's intending on double majoring in Politics and Cognitive Science (with a computational concentration). I'm also a coffee addict (whoops!), an avid adventurer, and have my Seal of Biliteracy in American Sign Language :)
+Hi! My name is Kandace Loualhati (Loo-uhl-haw-tee).
+
+I'm currently:
+
+-   An undergraduate at Pomona College (class of 2027)
+
+-   Double majoring in Politics and Cognitive Science
+
+-   Minoring in Data Science
