@@ -19,6 +19,8 @@ website:
         href: Permutationtest.qmd
       - text: "SQL"
         href: SQL_proj.qmd
+      - text: "Web Scraping"
+        href: WebScraping.qmd
 format:
   html:
     theme: minty
