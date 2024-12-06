@@ -1,0 +1,52 @@
+---
+title: "Web Scraping"
+author: Kandace Loualhati
+date: December 9th, 2024
+format: html
+execute:
+  warning: false
+  message: false
+---
+
+```{r}
+library(tidyverse)
+library(rvest)
+library(purrr)
+```
+
+```{r}
+# create a function that inputs a specific title for a Pomona College website 
+# and returns the facts listed on that specific URL
+web_func <- function(n) {
+  title <- gsub(" ", "-", n)
+  title <- gsub("and", "-", title)
+  title <- gsub("@", "at", title)
+  title <- gsub("&", "-", title)
+  title <- gsub("-+", "-", title)
+  html <- paste0("https://www.pomona.edu/", title)
+  page <- read_html(html)
+quantity <- page |>
+  html_elements(".text-7xl") |>
+  html_text()
+facts <- page |>
+  html_elements(".fact .text-xl") |>
+  html_text()
+# account for the sites that have no facts
+if (length(facts) == 0)
+  facts <- "N/A"
+if (length(quantity) == 0)
+  quantity <- "N/A"
+# return a tibble
+data <- tibble(
+  topic = n,
+  quantity = quantity,
+  facts = facts
+)
+return(data)
+}
+
+# map the different options available
+dif_titles <- c("Admissions & Aid", "Academics", "Life @ Pomona", "News & Events", "About", "Alumni & Families")
+map(dif_titles, web_func) |>
+  list_rbind()
+```

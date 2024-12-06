@@ -13,13 +13,27 @@ execute:
 ```{r}
 library(tidyverse)
 library(readr)
+library(dplyr)
 employed_gender <- read.csv("employed_gender.csv")
-ggplot(employed_gender, aes(x = year, y = full_time_female)) +
-  geom_point(color = "hotpink") +
+gendered_data <- employed_gender |>
+  filter(year == 2012) |>
+  mutate(
+    female_prop = full_time_female/total_full_time,
+    male_prop = full_time_male/total_full_time
+  )
+
+employee_data <- data.frame(
+  category = c("Female Workers", "Male Workers"),
+  value = c(gendered_data$female_prop, gendered_data$male_prop)
+)
+
+ggplot(employee_data, aes(x = "", y = value, fill = category)) +
+  geom_bar(stat = "identity", width = 1) +
+  coord_polar(theta = "y") +
   labs(
-    x = "Year",
-    y = "% Of Women Employed Full-Time",
-    title = "Women Employed Full-Time Per Year",
+    x = "",
+    y = "Proportion of Workers Out of Total Full Time %",
+    title = "Ratio of Male to Female Full-Time Workers in 2010"
   )
 ```
 

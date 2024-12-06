@@ -1,5 +1,5 @@
 ---
-title: "Kandace Loualhati (Loo-uhl-haw-tee)"
+title: "About Me"
 image: websitephoto.jpg
 toc: false
 about: 
@@ -11,7 +11,9 @@ about:
     href: https://github.com/Kandacelou
 ---
 
-About me:
+Hi! My name is Kandace Loualhati (Loo-uhl-haw-tee).
+
+Things to note:
 
 -   An undergraduate at Pomona College (class of 2027)
 
