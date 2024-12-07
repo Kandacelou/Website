@@ -13,10 +13,12 @@ about:
 
 Hi! My name is Kandace Loualhati (Loo-uhl-haw-tee).
 
-Things to note:
+I'm an undergraduate at Pomona College (class of 2027) who's double majoring in Politics and Cognitive Science as well as minoring in Data Science.
 
--   An undergraduate at Pomona College (class of 2027)
+Some things to note about me:
 
--   Double majoring in Politics and Cognitive Science
+-   Proficient in both Python and R
 
--   Minoring in Data Science
+-   Bilingual (English and American Sign Language)
+
+-   Served as a researcher in Computational Chemistry and Novel Drug Design under the guidance of Roberto A. Garza-Lopez

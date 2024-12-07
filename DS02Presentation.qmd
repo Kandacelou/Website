@@ -1,0 +1,114 @@
+---
+title: "DS02 Presentation"
+format: revealjs
+execute:
+  echo: true
+---
+
+## Web Scraping!
+
+Goals for this project:
+
+-   Create a function that scrapes www.pomona.edu according to a specific topic the user inputs, returning all facts on that specific page
+
+-   Create a function that scrapes www.usa.gov according to a certain letter the user inputs, returning all government agencies that start with that letter
+
+## Checking permissions
+
+```{r}
+# check permission
+library(robotstxt)
+paths_allowed("https://www.pomona.edu")
+paths_allowed("https://www.usa.gov")
+```
+
+## First Function
+
+```{r}
+# load in packages
+library(tidyverse)
+library(rvest)
+library(purrr)
+# create the function
+web_func <- function(n) {
+  title <- gsub(" ", "-", n)
+  title <- gsub("and", "-", title)
+  title <- gsub("@", "at", title)
+  title <- gsub("&", "-", title)
+  title <- gsub("-+", "-", title)
+  html <- paste0("https://www.pomona.edu/", title)
+  page <- read_html(html)
+quantity <- page |>
+  html_elements(".text-7xl") |>
+  html_text()
+facts <- page |>
+  html_elements(".fact .text-xl") |>
+  html_text()
+# account for the sites that have no facts
+if (length(facts) == 0)
+  facts <- "N/A"
+if (length(quantity) == 0)
+  quantity <- "N/A"
+# return a tibble
+data <- tibble(
+  topic = n,
+  quantity = quantity,
+  facts = facts
+)
+return(data)
+}
+```
+
+## Some Issues/Explanation
+
+-   The gsub() function serves as a replacement operation; in order for "n" to properly be translated into the html code, I had to remove/replace whitespaces, symbols, and the word "and"
+
+-   In order to account for the sites that don't have any facts, I created an if-clause for those whose lengths equal 0 to return "N/A" (i.e., News & Events)
+
+## Mapping the Func
+
+```{r}
+# map the different options available
+dif_titles <- c("Admissions & Aid", "Academics", "Life @ Pomona", "News & Events", "About", "Alumni & Families")
+map(dif_titles, web_func) |>
+  list_rbind()
+```
+
+## Second Function
+
+```{r}
+# create a function that takes a letter as input and returns all the U.S. government agencies that start with that letter
+gov_web_func <- function(letter) {
+  if (letter == "A")
+    gov_html <- paste0("https://www.usa.gov/agency-index#", letter)
+    else
+    gov_html <- paste0("https://www.usa.gov/agency-index/", letter, "#", letter)
+  gov_page <- read_html(gov_html)
+  agencies <- gov_page |>
+    html_elements("#block-views-block-federal-agencies-block-1 .usa-accordion__button") |>
+    html_text()
+  agen_list <- tibble(
+    agencies = agencies |>
+      str_remove("\n")
+  )
+  return(agen_list)
+}
+```
+
+## Some Issues/Explanation
+
+-   The letter "A" is the only letter that has a different HTML, so I created an if-else clause to account for that difference
+
+-   Most of the agencies ended with "\\n" so I removed that from the string
+
+-   Only the letters A-W (except for Q) have government agencies
+
+-   All the letters in the URL are uppercase
+
+## Mapping the Func
+
+```{r}
+all_letters <- setdiff(toupper(letters[1:23]), "Q")
+map(all_letters, gov_web_func) |>
+  list_rbind()
+```

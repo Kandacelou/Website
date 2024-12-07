@@ -21,6 +21,8 @@ website:
         href: SQL_proj.qmd
       - text: "Web Scraping"
         href: WebScraping.qmd
+        text: "Presentation"
+        href: DS02Presentation.qmd
 format:
   html:
     theme: minty
