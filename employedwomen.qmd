@@ -1,8 +1,9 @@
 ---
 title: "Employed Women"
 description: |
-  Analysis of women employed full-time data from TidyTuesday
+  Analysis of employed workers by gender (both full-time and part-time)
 author: Kandace Loualhati
+        original data from TidyTuesday
 date: September 17, 2024
 format: html
 execute: 
@@ -11,29 +12,31 @@ execute:
 ---
 
 ```{r}
+# load in packages
 library(tidyverse)
 library(readr)
 library(dplyr)
+# read in csv file
 employed_gender <- read.csv("employed_gender.csv")
-gendered_data <- employed_gender |>
-  filter(year == 2012) |>
-  mutate(
-    female_prop = full_time_female/total_full_time,
-    male_prop = full_time_male/total_full_time
-  )
-
-employee_data <- data.frame(
-  category = c("Female Workers", "Male Workers"),
-  value = c(gendered_data$female_prop, gendered_data$male_prop)
-)
-
-ggplot(employee_data, aes(x = "", y = value, fill = category)) +
-  geom_bar(stat = "identity", width = 1) +
-  coord_polar(theta = "y") +
+# plot line plots depicting the difference in full-time workers (by gender, by year)
+ggplot(employed_gender) +
+  geom_line(aes(x = year, y = full_time_female), color = "pink") +
+  geom_line(aes(x = year, y = full_time_male), color = "lightblue") +
   labs(
-    x = "",
-    y = "Proportion of Workers Out of Total Full Time %",
-    title = "Ratio of Male to Female Full-Time Workers in 2010"
+    x = "Year",
+    y = "% of Full-Time Workers",
+    title = "Layered Line Plot of Male vs Female Full-Time Workers"
+  )
+```
+
+```{r}
+ggplot(employed_gender) +
+  geom_line(aes(x = year, y = part_time_female), color = "pink") +
+  geom_line(aes(x = year, y = part_time_male), color = "lightblue") +
+  labs(
+    x = "Year",
+    y = "% of Part-Time Workers",
+    title = "Layered Line Plot of Male vs Female Part-Time Workers"
   )
 ```
 

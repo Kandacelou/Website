@@ -11,16 +11,23 @@ execute:
 ---
 
 ```{r}
+# load in packages
 library(tidyverse)
 library(readr)
- calfire_damage <- read.csv("calfire_damage.csv")
+# read in csv file
+calfire_damage <- read.csv("calfire_damage.csv")
+# graph the relationship between structures burnt and year 
 ggplot(calfire_damage, aes(x = year, y = structures)) +
-  geom_point(color = "orange") +
+  geom_area(fill = "orange") +
+  geom_line() +
+  geom_point() +
   labs(
     x = "Year",
     y = "Numbers of Structures Destroyed",
     title = "California Fire Damage Per Year",
   )
 ```
+
+According to the data and the graph above, the number of structures burned down in California peaked in 2017 with 10,823 buildings destroyed. According to Cal Fire (<https://www.fire.ca.gov/incidents/2017>), a total of 1,599,640 acres burned through the span of 9,270 wildfires. This year, however, may have suffered more than the graph depicts as this source also has reported 10,868 structures destroyed, instead of 10,823. This insinuates that the data may not be entirely accurate or fully collected at the time of this report.
 
 Code from: tidytuesday/data/2018/2018-08-21/calfire_damage.csv at master · rfordatascience/tidytuesday (github.com)
