@@ -1,14 +1,24 @@
 ---
 title: "California Fire Damage"
 description: |
-  Analysis of California Fire Damage data from TidyTuesday
+  This is an analysis of the 'California Fire Damage' data set from TidyTuesday. In this project, I depict the relationship of the quantity of buildings destroyed in a California wildfire over a span of about 2-3 decades. 
 author: Kandace Loualhati
 date: September 17, 2024
 format: html
 execute: 
   warning: false
   message: false
+toc: false
+about:
+  template: trestles
+  links: 
+  - text: "TidyTuesday"
+    href: "https://github.com/rfordatascience/tidytuesday/tree/main/data/2018/2018-08-21"
+  - text: "BuzzFeed Article"
+    href: "https://www.buzzfeednews.com/article/peteraldhous/california-wildfires-people-climate"
 ---
+
+## Code
 
 ```{r}
 # load in packages
@@ -28,6 +38,10 @@ ggplot(calfire_damage, aes(x = year, y = structures)) +
   )
 ```
 
+## Analysis
+
 According to the data and the graph above, the number of structures burned down in California peaked in 2017 with 10,823 buildings destroyed. According to Cal Fire (<https://www.fire.ca.gov/incidents/2017>), a total of 1,599,640 acres burned through the span of 9,270 wildfires. This year, however, may have suffered more than the graph depicts as this source also has reported 10,868 structures destroyed, instead of 10,823. This insinuates that the data may not be entirely accurate or fully collected at the time of this report.
 
-Code from: tidytuesday/data/2018/2018-08-21/calfire_damage.csv at master · rfordatascience/tidytuesday (github.com)
+## Citation
+
+I retrieved the original csv file from a Tidy Tuesday data set. This data originates from a Buzzfeed News article on wildfires in California by Peter Aldhous.

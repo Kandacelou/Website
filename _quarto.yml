@@ -7,22 +7,22 @@ website:
   navbar:
     left:
       - href: index.qmd
-      - text: "Data Viz"
+      - text: "Projects"
         menu: 
           - text: "California Fire Damage"
             href: calfiredamage.qmd
           - text: "Employed Women"
             href: employedwomen.qmd
-      - text: "Text Analysis"
-        href: textanalysis.qmd
-      - text: "Permutation Test"
-        href: Permutationtest.qmd
-      - text: "SQL"
-        href: SQL_proj.qmd
-      - text: "Web Scraping"
-        href: WebScraping.qmd
-      - text: "Presentation"
-        href: DS02Presentation.qmd
+          - text: "'The Office' Text Analysis"
+            href: textanalysis.qmd
+          - text: "Permutation Test"
+            href: Permutationtest.qmd
+          - text: "SQL"
+            href: SQL_proj.qmd
+          - text: "Web Scraping"
+            href: WebScraping.qmd
+          - text: "Presentation"
+            href: DS02Presentation.qmd
 format:
   html:
     theme: minty

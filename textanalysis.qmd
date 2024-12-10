@@ -1,14 +1,26 @@
 ---
 title: "The Office Lines Analysis"
 description: |
-  Analysis of The Office Lines data from Tidy Tuesday (https://www.kaggle.com/datasets/fabriziocominetti/the-office-lines?resource=download)
+  This is an analysis of the 'Office Lines' data set from Kaggle. In this project, I analyze word frequency (specifically when Jim refers to/references Pam) and the amount of laughs in each episode.
 author: Kandace Loualhati
 date: October 1, 2024
 format: html
 execute:
   warning: false
   message: false
+toc: false
+about:
+  template: trestles
+  links: 
+  - text: "Kaggle"
+    href: "https://www.kaggle.com/datasets/fabriziocominetti/the-office-lines?resource=download"
+  - text: "Screenrant"
+    href: "https://screenrant.com/funniest-episodes-the-office/"
+  - text: "Collider"
+    href: "https://collider.com/best-the-office-episodes-ranked/"
 ---
+
+## Code To Count 'Pam'
 
 ```{r}
 # load in packages
@@ -16,17 +28,19 @@ library(tidyverse)
 library(readr)
 library(dplyr)
 library(knitr)
-
 # import data set
 office_lines <- read.csv("the-office_lines.csv")
-
 # filter out Jim's lines when he says "Pam" in every season
 Jim_lines <- office_lines |>
   filter(Character == "Jim") |>
   filter(str_detect(Line, "\\bPam[a-z]*\\b")) |>
   group_by(Season, Episode_Number) |>
   summarize(n = n(), .groups = "drop") 
+```
 
+## Bar Plot of 'Pam' References
+
+```{r}
 # plot of Jim's frequency of the word "Pam"
 ggplot(Jim_lines, aes(x = Episode_Number, y = n, fill = Season)) +
   geom_col() +
@@ -37,7 +51,11 @@ ggplot(Jim_lines, aes(x = Episode_Number, y = n, fill = Season)) +
   )
 ```
 
+## Analysis of 'Pam' Counting
+
 "The Office," although heavily referred to as a "comedy," has one of the most popular romantic couples in television sitcom history: Jim and Pam. In this analysis, I counted how many times Jim said the name "Pam" / "Pamela" per episode in every season. The graph is also color-coded by season: getting a lighter shade of blue as the seasons progress. Based on the data, Jim said the name "Pam" the most on episode 4 collectively throughout every season, and this trend would decrease the longer a season went on. Ultimately, Jim referenced "Pam" in 123 episodes throughout the course of the TV show.
+
+## Code For Laugh Count
 
 ```{r}
 # detect whenever somebody laughs
@@ -49,9 +67,14 @@ laugh_counts <- office_lines |>
   summarize(n = n()) |>
   arrange(desc(n)) |>
   head(n = 10)
-
 # create a table indicating laugh counts
 kable(laugh_counts, caption = "Top 10 Laugh Counts by Season and Episode")
 ```
 
-"The Office" is well known for their improvisations and breaking of character, leading to genuine laughter adding on to the already scripted occurrences. The above table shows a list of the Top 10 episodes in which characters laughed during their lines. This displays how Season 8, Episode 10 and Season 9, Episode 18 have the most laughter within the episode, at a total of 13 laughs. Surprisingly, these episodes actually do not parallel with what fans think are the "funniest episodes." ScreenRant ranked Season 2, Episode 12 as the funniest episode and Collider ranked Season 4, Episode 13 the funniest.
+## Analysis of Top 10 Laugh Counts
+
+"The Office" is well known for their improvisations and breaking of character, leading to genuine laughter adding on to the already scripted occurrences. The above table shows a list of the Top 10 episodes in which characters laughed during their lines. This displays how Season 8, Episode 10 and Season 9, Episode 18 have the most laughter within the episode, at a total of 13 laughs. Surprisingly, these episodes actually do not parallel with what fans think are the "funniest episodes." Both ScreenRant and Collider ranked Season 2, Episode 12 as the funniest episode.
+
+## Citation
+
+I retrieved the original data from a Kaggle dataset. This data was webscraped from OfficeQuotes.net and includes every line in 'The Office' from every season that aired on television.

@@ -1,7 +1,6 @@
 ---
-title: "About Me"
 image: websitephoto.jpg
-toc: false
+toc: true
 about: 
   template: jolla
   image-shape: round
@@ -11,14 +10,24 @@ about:
     href: https://github.com/Kandacelou
 ---
 
-Hi! My name is Kandace Loualhati (Loo-uhl-haw-tee).
+## About Me {style="color: black"}
 
-I'm an undergraduate at Pomona College (class of 2027) who's double majoring in Politics and Cognitive Science as well as minoring in Data Science.
+Hi! My name is Kandace Loualhati. I'm an undergraduate at Pomona College (class of 2027) who's double majoring in Politics and Cognitive Science as well as minoring in Data Science. My ultimate goal is to become a data scientist, specializing in statistical analysis and data mining.
 
-Some things to note about me:
+## Skills {style="color: black"}
 
--   Proficient in both Python and R
+Programming languages & Computer Literacy: Proficient in Python and R
 
--   Bilingual (English and American Sign Language)
+Languages: Bilingual in English and American Sign Language
 
--   Served as a researcher in Computational Chemistry and Novel Drug Design under the guidance of Roberto A. Garza-Lopez
+Relevant Courses Taken: Computer Science Using Python, Statistics, Cognitive Science, Foundations of Data Science
+
+## Experience {style="color: black"}
+
+**Research**
+
+Served as a researcher in Computational Chemistry and Novel Drug Design under the guidance of Roberto A. Garza-Lopez
+
+**College Adviser**
+
+Assisted students with the college application process and provided academic advising to students

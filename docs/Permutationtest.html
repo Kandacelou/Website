@@ -8,7 +8,7 @@
 
 <meta name="author" content="Kandace Loualhati">
 <meta name="dcterms.date" content="2024-11-08">
-<meta name="description" content="Permutation Test For The Natural Sex Ratios of Newborn Babies (from “Births” Dataset in the MosaicData package within R) Research question motivated by: https://utswmed.org/medblog/it-boy-or-girl-fathers-family-might-provide-clue/">
+<meta name="description" content="This is a permutation test for the natural sex ratios of newborn babies from the “Births” Dataset in the MosaicData package within R. I will be exploring the age-old question: “is it a boy or a girl” and determine whether this binary option is as random as we think. My research question was motivated by an article from UT Southwestern Medical Center about geneology.">
 
 <title>Permutation Test – Kandace Loualhati</title>
 <style>
@@ -70,7 +70,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
@@ -130,10 +129,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">About Me</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-data-viz" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Data Viz</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-projects" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Projects</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-data-viz">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-projects">    
         <li>
     <a class="dropdown-item" href="./calfiredamage.html">
  <span class="dropdown-text">California Fire Damage</span></a>
@@ -142,28 +141,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="./employedwomen.html">
  <span class="dropdown-text">Employed Women</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./textanalysis.html">
+ <span class="dropdown-text">‘The Office’ Text Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./Permutationtest.html">
+ <span class="dropdown-text">Permutation Test</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./SQL_proj.html">
+ <span class="dropdown-text">SQL</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./WebScraping.html">
+ <span class="dropdown-text">Web Scraping</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./DS02Presentation.html">
+ <span class="dropdown-text">Presentation</span></a>
+  </li>  
     </ul>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" href="./textanalysis.html"> 
-<span class="menu-text">Text Analysis</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link active" href="./Permutationtest.html" aria-current="page"> 
-<span class="menu-text">Permutation Test</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./SQL_proj.html"> 
-<span class="menu-text">SQL</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./WebScraping.html"> 
-<span class="menu-text">Web Scraping</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./DS02Presentation.html"> 
-<span class="menu-text">Presentation</span></a>
-  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -175,50 +174,51 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
-    </div>
+    
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
-
+<div class="quarto-about-trestles column-page">
+  <div class="about-entity">
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Permutation Test</h1>
 </div>
-
 <div>
   <div class="description">
-    <p>Permutation Test For The Natural Sex Ratios of Newborn Babies (from “Births” Dataset in the MosaicData package within R) Research question motivated by: https://utswmed.org/medblog/it-boy-or-girl-fathers-family-might-provide-clue/</p>
+    <p>This is a permutation test for the natural sex ratios of newborn babies from the “Births” Dataset in the MosaicData package within R. I will be exploring the age-old question: “is it a boy or a girl” and determine whether this binary option is as random as we think. My research question was motivated by an article from UT Southwestern Medical Center about geneology.</p>
   </div>
 </div>
-
-
 <div class="quarto-title-meta column-page">
-
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
              <p>Kandace Loualhati </p>
           </div>
   </div>
-    
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
       <p class="date">November 8, 2024</p>
     </div>
   </div>
-  
-    
   </div>
-  
-
-
 </header>
-
-
+    <div class="about-links">
+  <a href="https://rdrr.io/cran/mosaicData/man/Births.html" class="about-link" rel="" target="">
+     <span class="about-link-text">MosaicData</span>
+  </a>
+  <a href="https://utswmed.org/medblog/it-boy-or-girl-fathers-family-might-provide-clue/" class="about-link" rel="" target="">
+     <span class="about-link-text">UT Southwestern Article</span>
+  </a>
+</div>
+  </div>
+  <div class="about-contents"><main class="content column-page" id="quarto-document-content">
+<section id="research-question" class="level2">
+<h2 data-anchor-id="research-question">Research Question</h2>
 <p>Although the sex ratio for newborn babies seems as though it should be a random phenomenon, an article by UTSouthwestern Medical Center explains that there may actually be a genetic explanation based on the biological father. If the assumption that sex was up to chance were true, then all men who have reproduced would always have had an equal amount of X chromosomes and Y chromosomes in their sperm; however, there may be an imbalance towards Y chromosomes for biological fathers, as there is a greater likelihood for women to have baby boys instead of girls. The null hypothesis assumes that there is no inherent relationship for the likelihood of the sex of a baby; thus, if the null hypothesis can be rejected then the alternative hypothesis - that sex is not equally probable - can further be explored scientifically.&nbsp;</p>
 <p>For my analysis, I will be using the “Births” dataset from the MosaicData package in R Studio. I plan on finding the proportions of both female and male babies, to first reveal if there is in fact an inclination towards the male sex for newborns. Afterwards, I plan on creating a function to simulate the random categorization of babies based on sex, and further using this function to find the p value and ultimately determine if the null hypothesis can successfully be rejected.</p>
+</section>
+<section id="function-and-p-value" class="level2">
+<h2 data-anchor-id="function-and-p-value">Function and P-Value</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load in packages</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
@@ -231,15 +231,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set seed for reproducability </span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">47</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># import data set</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>baby_data <span class="ot">&lt;-</span> births</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># find proportion of female babies born</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>female_prop <span class="ot">&lt;-</span> baby_data <span class="sc">|&gt;</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">proportion =</span> <span class="fu">mean</span>(sex_baby <span class="sc">==</span> <span class="st">"female"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>()</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>female_prop</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># import data set</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>baby_data <span class="ot">&lt;-</span> births</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># find proportion of female babies born</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>female_prop <span class="ot">&lt;-</span> baby_data <span class="sc">|&gt;</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">proportion =</span> <span class="fu">mean</span>(sex_baby <span class="sc">==</span> <span class="st">"female"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>()</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>female_prop</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.4533333</code></pre>
 </div>
@@ -258,16 +256,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>))</span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">mean</span>(result <span class="sc">==</span> <span class="st">"male"</span>))</span>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co"># find p value</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>num_rep <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>random_map <span class="ot">&lt;-</span> <span class="fu">map_dbl</span>(<span class="dv">1</span><span class="sc">:</span>num_rep, random_sex, total_babies)</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>p_val <span class="ot">&lt;-</span> <span class="fu">sum</span>(random_map <span class="sc">&gt;=</span> male_prop) <span class="sc">/</span> num_rep</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(p_val)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co"># find p value</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>num_rep <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>random_map <span class="ot">&lt;-</span> <span class="fu">map_dbl</span>(<span class="dv">1</span><span class="sc">:</span>num_rep, random_sex, total_babies)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>p_val <span class="ot">&lt;-</span> <span class="fu">sum</span>(random_map <span class="sc">&gt;=</span> male_prop) <span class="sc">/</span> num_rep</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(p_val)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.1407</code></pre>
 </div>
 </div>
+</section>
+<section id="sex-ratio-bar-plot" class="level2">
+<h2 data-anchor-id="sex-ratio-bar-plot">Sex-Ratio Bar Plot</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a bar plot showing the difference in sex ratio </span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(baby_data), <span class="fu">aes</span>(<span class="at">x =</span> sex_baby)) <span class="sc">+</span></span>
@@ -285,20 +285,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<ul>
-<li>This is a graph depicting the natural imbalance in the biological sex ratio for newborns. There is approximately a 10% difference between females and males, for this data set alone.</li>
-</ul>
+</section>
+<section id="about-the-bar-plot" class="level2">
+<h2 data-anchor-id="about-the-bar-plot">About The Bar Plot</h2>
+<p>This is a graph depicting the natural imbalance in the biological sex ratio for newborns. There is approximately a 10% difference between females and males, for this data set alone.</p>
+</section>
+<section id="permutation-test-histogram" class="level2">
+<h2 data-anchor-id="permutation-test-histogram">Permutation Test Histogram</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a new data frame for graphing</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>sim_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">simulated_male_prop =</span> random_map)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># create a histogram depicting the proportion of male births and the p-value</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sim_data, <span class="fu">aes</span>(<span class="at">x =</span> simulated_male_prop)) <span class="sc">+</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">0.01</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"lightblue"</span>) <span class="sc">+</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> male_prop, <span class="at">color =</span> <span class="st">"hotpink"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of Simulated Male Proportions"</span>,</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Simulated Male Proportion"</span>,</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Frequency"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># create a histogram depicting the proportion of male births and the p-value</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sim_data, <span class="fu">aes</span>(<span class="at">x =</span> simulated_male_prop)) <span class="sc">+</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">0.01</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"lightblue"</span>) <span class="sc">+</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> male_prop, <span class="at">color =</span> <span class="st">"hotpink"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of Simulated Male Proportions"</span>,</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Simulated Male Proportion"</span>,</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Frequency"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -307,14 +310,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<ul>
-<li>This is a graph showing the tendency for male proportions, when simulated many times, to arrive at the center (or around 0.5 out of the birthing population). The pink v-line, or the x-intercept, depicts the actual male proportion in birthing rates (0.5466667); however, although this line is slightly skewed to the right, the difference is not significant.</li>
-</ul>
+</section>
+<section id="about-the-histogram" class="level2">
+<h2 data-anchor-id="about-the-histogram">About The Histogram</h2>
+<p>This is a graph showing the tendency for male proportions, when simulated many times, to arrive at the center (or around 0.5 out of the birthing population). The pink v-line, or the x-intercept, depicts the actual male proportion in birthing rates (0.5466667); however, although this line is slightly skewed to the right, the difference is not significant.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 data-anchor-id="conclusion">Conclusion</h2>
 <p>Ultimately, although my code did prove that there is a slight inclination for the probability that women will birth male babies instead of females, with the P-Value being 0.1407, the null hypothesis that this is due to complete randomness, cannot confidently be rejected. There is not strong enough evidence against the null hypothesis; however, if I were to repeat this analysis, I would do another permutation test using variables for both the baby’s sex and the father’s X/Y ratio, for there may be a stronger relationship there. Currently, there is not much research on this correlation, so I’d most likely need to conduct my own research or wait until somebody believes that this imbalance in the probability of sexes is significant enough to explore, despite the P-Value.</p>
+</section>
+<section id="citation" class="level2">
+<h2 data-anchor-id="citation">Citation</h2>
+<p>I retrieved the original data from the MosaicData package within R. The data for this ‘Births’ package, however, originated from the National Vital Statistics System and exported to csv by Robert Kern.</p>
 
 
-
-</main> <!-- /main -->
+</section>
+</main></div>
+</div>
+ <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -335,13 +348,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
       if (clz.startsWith('code-annotation-')) {                     

@@ -8,7 +8,7 @@
 
 <meta name="author" content="Kandace Loualhati">
 <meta name="dcterms.date" content="2024-10-01">
-<meta name="description" content="Analysis of The Office Lines data from Tidy Tuesday (https://www.kaggle.com/datasets/fabriziocominetti/the-office-lines?resource=download)">
+<meta name="description" content="This is an analysis of the ‘Office Lines’ data set from Kaggle. In this project, I analyze word frequency (specifically when Jim refers to/references Pam) and the amount of laughs in each episode.">
 
 <title>The Office Lines Analysis – Kandace Loualhati</title>
 <style>
@@ -70,7 +70,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
@@ -130,10 +129,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">About Me</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-data-viz" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Data Viz</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-projects" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Projects</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-data-viz">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-projects">    
         <li>
     <a class="dropdown-item" href="./calfiredamage.html">
  <span class="dropdown-text">California Fire Damage</span></a>
@@ -142,28 +141,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="./employedwomen.html">
  <span class="dropdown-text">Employed Women</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./textanalysis.html">
+ <span class="dropdown-text">‘The Office’ Text Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./Permutationtest.html">
+ <span class="dropdown-text">Permutation Test</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./SQL_proj.html">
+ <span class="dropdown-text">SQL</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./WebScraping.html">
+ <span class="dropdown-text">Web Scraping</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./DS02Presentation.html">
+ <span class="dropdown-text">Presentation</span></a>
+  </li>  
     </ul>
   </li>
-  <li class="nav-item">
-    <a class="nav-link active" href="./textanalysis.html" aria-current="page"> 
-<span class="menu-text">Text Analysis</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./Permutationtest.html"> 
-<span class="menu-text">Permutation Test</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./SQL_proj.html"> 
-<span class="menu-text">SQL</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./WebScraping.html"> 
-<span class="menu-text">Web Scraping</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./DS02Presentation.html"> 
-<span class="menu-text">Presentation</span></a>
-  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -175,95 +174,103 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
-    </div>
+    
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
-
+<div class="quarto-about-trestles column-page">
+  <div class="about-entity">
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">The Office Lines Analysis</h1>
 </div>
-
 <div>
   <div class="description">
-    <p>Analysis of The Office Lines data from Tidy Tuesday (https://www.kaggle.com/datasets/fabriziocominetti/the-office-lines?resource=download)</p>
+    <p>This is an analysis of the ‘Office Lines’ data set from Kaggle. In this project, I analyze word frequency (specifically when Jim refers to/references Pam) and the amount of laughs in each episode.</p>
   </div>
 </div>
-
-
 <div class="quarto-title-meta column-page">
-
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
              <p>Kandace Loualhati </p>
           </div>
   </div>
-    
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
       <p class="date">October 1, 2024</p>
     </div>
   </div>
-  
-    
   </div>
-  
-
-
 </header>
-
-
+    <div class="about-links">
+  <a href="https://www.kaggle.com/datasets/fabriziocominetti/the-office-lines?resource=download" class="about-link" rel="" target="">
+     <span class="about-link-text">Kaggle</span>
+  </a>
+  <a href="https://screenrant.com/funniest-episodes-the-office/" class="about-link" rel="" target="">
+     <span class="about-link-text">Screenrant</span>
+  </a>
+  <a href="https://collider.com/best-the-office-episodes-ranked/" class="about-link" rel="" target="">
+     <span class="about-link-text">Collider</span>
+  </a>
+</div>
+  </div>
+  <div class="about-contents"><main class="content column-page" id="quarto-document-content">
+<section id="code-to-count-pam" class="level2">
+<h2 data-anchor-id="code-to-count-pam">Code To Count ‘Pam’</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load in packages</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># import data set</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>office_lines <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"the-office_lines.csv"</span>)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># filter out Jim's lines when he says "Pam" in every season</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>Jim_lines <span class="ot">&lt;-</span> office_lines <span class="sc">|&gt;</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Character <span class="sc">==</span> <span class="st">"Jim"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(Line, <span class="st">"</span><span class="sc">\\</span><span class="st">bPam[a-z]*</span><span class="sc">\\</span><span class="st">b"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Season, Episode_Number) <span class="sc">|&gt;</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">.groups =</span> <span class="st">"drop"</span>) </span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># plot of Jim's frequency of the word "Pam"</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Jim_lines, <span class="fu">aes</span>(<span class="at">x =</span> Episode_Number, <span class="at">y =</span> n, <span class="at">fill =</span> Season)) <span class="sc">+</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Episode Number"</span>,</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"# of 'Pam' Occurrences"</span>, </span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"How Many Times Jim Said 'Pam' in 'The Office'"</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># import data set</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>office_lines <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"the-office_lines.csv"</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># filter out Jim's lines when he says "Pam" in every season</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>Jim_lines <span class="ot">&lt;-</span> office_lines <span class="sc">|&gt;</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Character <span class="sc">==</span> <span class="st">"Jim"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(Line, <span class="st">"</span><span class="sc">\\</span><span class="st">bPam[a-z]*</span><span class="sc">\\</span><span class="st">b"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Season, Episode_Number) <span class="sc">|&gt;</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">.groups =</span> <span class="st">"drop"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="bar-plot-of-pam-references" class="level2">
+<h2 data-anchor-id="bar-plot-of-pam-references">Bar Plot of ‘Pam’ References</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot of Jim's frequency of the word "Pam"</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Jim_lines, <span class="fu">aes</span>(<span class="at">x =</span> Episode_Number, <span class="at">y =</span> n, <span class="at">fill =</span> Season)) <span class="sc">+</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Episode Number"</span>,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"# of 'Pam' Occurrences"</span>, </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"How Many Times Jim Said 'Pam' in 'The Office'"</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="textanalysis_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="textanalysis_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
+</section>
+<section id="analysis-of-pam-counting" class="level2">
+<h2 data-anchor-id="analysis-of-pam-counting">Analysis of ‘Pam’ Counting</h2>
 <p>“The Office,” although heavily referred to as a “comedy,” has one of the most popular romantic couples in television sitcom history: Jim and Pam. In this analysis, I counted how many times Jim said the name “Pam” / “Pamela” per episode in every season. The graph is also color-coded by season: getting a lighter shade of blue as the seasons progress. Based on the data, Jim said the name “Pam” the most on episode 4 collectively throughout every season, and this trend would decrease the longer a season went on. Ultimately, Jim referenced “Pam” in 123 episodes throughout the course of the TV show.</p>
+</section>
+<section id="code-for-laugh-count" class="level2">
+<h2 data-anchor-id="code-for-laugh-count">Code For Laugh Count</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># detect whenever somebody laughs</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>laugh_counts <span class="ot">&lt;-</span> office_lines <span class="sc">|&gt;</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(str_detect</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>         (str_to_lower</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>           (<span class="fu">str_trim</span>(Line)), <span class="st">"</span><span class="sc">\\</span><span class="st">[laughing</span><span class="sc">\\</span><span class="st">]|</span><span class="sc">\\</span><span class="st">[laughs</span><span class="sc">\\</span><span class="st">]"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Episode_Number, Season) <span class="sc">|&gt;</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">|&gt;</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n)) <span class="sc">|&gt;</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="at">n =</span> <span class="dv">10</span>)</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># create a table indicating laugh counts</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(laugh_counts, <span class="at">caption =</span> <span class="st">"Top 10 Laugh Counts by Season and Episode"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># detect whenever somebody laughs</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>laugh_counts <span class="ot">&lt;-</span> office_lines <span class="sc">|&gt;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(str_detect</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>         (str_to_lower</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>           (<span class="fu">str_trim</span>(Line)), <span class="st">"</span><span class="sc">\\</span><span class="st">[laughing</span><span class="sc">\\</span><span class="st">]|</span><span class="sc">\\</span><span class="st">[laughs</span><span class="sc">\\</span><span class="st">]"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Episode_Number, Season) <span class="sc">|&gt;</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">|&gt;</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n)) <span class="sc">|&gt;</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="at">n =</span> <span class="dv">10</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># create a table indicating laugh counts</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(laugh_counts, <span class="at">caption =</span> <span class="st">"Top 10 Laugh Counts by Season and Episode"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>Top 10 Laugh Counts by Season and Episode</caption>
@@ -329,11 +336,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
-<p>“The Office” is well known for their improvisations and breaking of character, leading to genuine laughter adding on to the already scripted occurrences. The above table shows a list of the Top 10 episodes in which characters laughed during their lines. This displays how Season 8, Episode 10 and Season 9, Episode 18 have the most laughter within the episode, at a total of 13 laughs. Surprisingly, these episodes actually do not parallel with what fans think are the “funniest episodes.” ScreenRant ranked Season 2, Episode 12 as the funniest episode and Collider ranked Season 4, Episode 13 the funniest.</p>
+</section>
+<section id="analysis-of-top-10-laugh-counts" class="level2">
+<h2 data-anchor-id="analysis-of-top-10-laugh-counts">Analysis of Top 10 Laugh Counts</h2>
+<p>“The Office” is well known for their improvisations and breaking of character, leading to genuine laughter adding on to the already scripted occurrences. The above table shows a list of the Top 10 episodes in which characters laughed during their lines. This displays how Season 8, Episode 10 and Season 9, Episode 18 have the most laughter within the episode, at a total of 13 laughs. Surprisingly, these episodes actually do not parallel with what fans think are the “funniest episodes.” Both ScreenRant and Collider ranked Season 2, Episode 12 as the funniest episode.</p>
+</section>
+<section id="citation" class="level2">
+<h2 data-anchor-id="citation">Citation</h2>
+<p>I retrieved the original data from a Kaggle dataset. This data was webscraped from OfficeQuotes.net and includes every line in ‘The Office’ from every season that aired on television.</p>
 
 
-
-</main> <!-- /main -->
+</section>
+</main></div>
+</div>
+ <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -354,13 +370,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
       if (clz.startsWith('code-annotation-')) {                     

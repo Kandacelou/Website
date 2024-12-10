@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Kandace Loualhati original data from TidyTuesday">
+<meta name="author" content="Kandace Loualhati">
 <meta name="dcterms.date" content="2024-09-17">
-<meta name="description" content="Analysis of employed workers by gender (both full-time and part-time)">
+<meta name="description" content="This is an analysis of the ‘Employed Gender’ data set from TidyTuesday. In this project, I depict the relationship between binary sex and percentages of employment in both full-time and part-time positions.">
 
 <title>Employed Women – Kandace Loualhati</title>
 <style>
@@ -70,7 +70,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
@@ -130,10 +129,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">About Me</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-data-viz" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Data Viz</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-projects" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Projects</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-data-viz">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-projects">    
         <li>
     <a class="dropdown-item" href="./calfiredamage.html">
  <span class="dropdown-text">California Fire Damage</span></a>
@@ -142,28 +141,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="./employedwomen.html">
  <span class="dropdown-text">Employed Women</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./textanalysis.html">
+ <span class="dropdown-text">‘The Office’ Text Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./Permutationtest.html">
+ <span class="dropdown-text">Permutation Test</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./SQL_proj.html">
+ <span class="dropdown-text">SQL</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./WebScraping.html">
+ <span class="dropdown-text">Web Scraping</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./DS02Presentation.html">
+ <span class="dropdown-text">Presentation</span></a>
+  </li>  
     </ul>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" href="./textanalysis.html"> 
-<span class="menu-text">Text Analysis</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./Permutationtest.html"> 
-<span class="menu-text">Permutation Test</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./SQL_proj.html"> 
-<span class="menu-text">SQL</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./WebScraping.html"> 
-<span class="menu-text">Web Scraping</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./DS02Presentation.html"> 
-<span class="menu-text">Presentation</span></a>
-  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -175,48 +174,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
-    </div>
+    
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
-
+<div class="quarto-about-trestles column-page">
+  <div class="about-entity">
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Employed Women</h1>
 </div>
-
 <div>
   <div class="description">
-    <p>Analysis of employed workers by gender (both full-time and part-time)</p>
+    <p>This is an analysis of the ‘Employed Gender’ data set from TidyTuesday. In this project, I depict the relationship between binary sex and percentages of employment in both full-time and part-time positions.</p>
   </div>
 </div>
-
-
 <div class="quarto-title-meta column-page">
-
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Kandace Loualhati original data from TidyTuesday </p>
+             <p>Kandace Loualhati </p>
           </div>
   </div>
-    
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
       <p class="date">September 17, 2024</p>
     </div>
   </div>
-  
-    
   </div>
-  
-
-
 </header>
-
-
+    <div class="about-links">
+  <a href="https://github.com/rfordatascience/tidytuesday/tree/main/data/2019/2019-03-05" class="about-link" rel="" target="">
+     <span class="about-link-text">TidyTuesday</span>
+  </a>
+</div>
+  </div>
+  <div class="about-contents"><main class="content column-page" id="quarto-document-content">
+<section id="code-for-full-time-workers" class="level2">
+<h2 data-anchor-id="code-for-full-time-workers">Code for Full-Time Workers</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load in packages</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
@@ -226,8 +220,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>employed_gender <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"employed_gender.csv"</span>)</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># plot line plots depicting the difference in full-time workers (by gender, by year)</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(employed_gender) <span class="sc">+</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> full_time_female), <span class="at">color =</span> <span class="st">"pink"</span>) <span class="sc">+</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> full_time_male), <span class="at">color =</span> <span class="st">"lightblue"</span>) <span class="sc">+</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> full_time_female), <span class="at">color =</span> <span class="st">"hotpink"</span>) <span class="sc">+</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> full_time_male), <span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Year"</span>,</span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"% of Full-Time Workers"</span>,</span>
@@ -241,10 +235,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+</section>
+<section id="code-for-part-time-workers" class="level2">
+<h2 data-anchor-id="code-for-part-time-workers">Code for Part-Time Workers</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(employed_gender) <span class="sc">+</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> part_time_female), <span class="at">color =</span> <span class="st">"pink"</span>) <span class="sc">+</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> part_time_male), <span class="at">color =</span> <span class="st">"lightblue"</span>) <span class="sc">+</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> part_time_female), <span class="at">color =</span> <span class="st">"hotpink"</span>) <span class="sc">+</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> part_time_male), <span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Year"</span>,</span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"% of Part-Time Workers"</span>,</span>
@@ -258,11 +255,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>Code from: tidytuesday/data/2019/2019-03-05/employed_gender.csv at master · rfordatascience/tidytuesday (github.com)</p>
+</section>
+<section id="analysis" class="level2">
+<h2 data-anchor-id="analysis">Analysis</h2>
+<p>The most interesting aspect of these two graphs is the inversion which occurs for the ratio of full-time to part-time work by sex. This is most likely due to the historical struggle for self-identified women in earning and maintaining full-time positions. If I were to continue with this project, I would want to explore the relationship between maternity leave/motherhood and this domination of part-time work for women.</p>
+</section>
+<section id="citation" class="level2">
+<h2 data-anchor-id="citation">Citation</h2>
+<p>I retrieved the original csv file from a Tidy Tuesday data set. The raw data originates from the Bureau of Labor Statistics and the Census Bureau about women in the workforce. Jon Harmon, an advanced R programming consultant, then manipulated and divided the data, motivated by March being Women’s History month.</p>
 
 
-
-</main> <!-- /main -->
+</section>
+</main></div>
+</div>
+ <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -283,13 +289,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
       if (clz.startsWith('code-annotation-')) {                     

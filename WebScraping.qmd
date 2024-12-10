@@ -1,12 +1,24 @@
 ---
 title: "Web Scraping"
+description: |
+  This is my web scraping of both Pomona.edu and Usa.Gov, creating two new functions based on data that I personally scraped.
 author: Kandace Loualhati
 date: December 9, 2024
 format: html
 execute:
   warning: false
   message: false
+toc: false
+about:
+  template: trestles
+  links: 
+  - text: "Pomona.Edu"
+    href: "https://www.pomona.edu"
+  - text: "Usa.Gov"
+    href: "https://www.usa.gov/agency-index"
 ---
+
+## Web Scraping the Pomona College Home Page
 
 ```{r}
 library(tidyverse)
@@ -50,11 +62,19 @@ map(dif_titles, web_func) |>
   list_rbind()
 ```
 
+## Checking Permission
+
 ```{r}
 # check permission
 library(robotstxt)
 paths_allowed("https://www.pomona.edu")
 ```
+
+## Analysis of Pomona Scraping
+
+This function would specifically be useful for high school or undergraduate seniors in their college search. By minimizing the information provided on a certain page, students would quickly be able to just pull the information they're most interested in. For example, if this hypothetical person needed to know the student:faculty ratio or the average class size, all they would need to do is type in "Admissions & Aid" into the function to pull out this fact.
+
+## Web Scraping the Government Agencies Page
 
 ```{r}
 # create a function that takes a letter as input and returns all the U.S. government agencies that start with that letter
@@ -78,7 +98,13 @@ map(all_letters, gov_web_func) |>
   list_rbind()
 ```
 
+## Checking Permission
+
 ```{r}
 # check permission
 paths_allowed("https://www.usa.gov")
 ```
+
+## Analysis of Agency Scraping
+
+This function would be useful for anybody interested in government agencies. If somebody needed to quickly find the name or contact information for "U.S. federal government agencies, departments, corporations, instrumentalities, \[or\] government-sponsored enterprises," and only knew the letter in which it started, this function would quickly be able to retrieve this information.

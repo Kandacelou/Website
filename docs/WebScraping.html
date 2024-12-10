@@ -8,6 +8,7 @@
 
 <meta name="author" content="Kandace Loualhati">
 <meta name="dcterms.date" content="2024-12-09">
+<meta name="description" content="This is my web scraping of both Pomona.edu and Usa.Gov, creating two new functions based on data that I personally scraped.">
 
 <title>Web Scraping – Kandace Loualhati</title>
 <style>
@@ -69,7 +70,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
@@ -129,10 +129,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">About Me</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-data-viz" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Data Viz</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-projects" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Projects</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-data-viz">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-projects">    
         <li>
     <a class="dropdown-item" href="./calfiredamage.html">
  <span class="dropdown-text">California Fire Damage</span></a>
@@ -141,28 +141,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="./employedwomen.html">
  <span class="dropdown-text">Employed Women</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./textanalysis.html">
+ <span class="dropdown-text">‘The Office’ Text Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./Permutationtest.html">
+ <span class="dropdown-text">Permutation Test</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./SQL_proj.html">
+ <span class="dropdown-text">SQL</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./WebScraping.html">
+ <span class="dropdown-text">Web Scraping</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./DS02Presentation.html">
+ <span class="dropdown-text">Presentation</span></a>
+  </li>  
     </ul>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" href="./textanalysis.html"> 
-<span class="menu-text">Text Analysis</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./Permutationtest.html"> 
-<span class="menu-text">Permutation Test</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./SQL_proj.html"> 
-<span class="menu-text">SQL</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link active" href="./WebScraping.html" aria-current="page"> 
-<span class="menu-text">Web Scraping</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./DS02Presentation.html"> 
-<span class="menu-text">Presentation</span></a>
-  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -174,43 +174,46 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
-    </div>
+    
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
-
+<div class="quarto-about-trestles column-page">
+  <div class="about-entity">
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Web Scraping</h1>
 </div>
-
-
-
+<div>
+  <div class="description">
+    <p>This is my web scraping of both Pomona.edu and Usa.Gov, creating two new functions based on data that I personally scraped.</p>
+  </div>
+</div>
 <div class="quarto-title-meta column-page">
-
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
              <p>Kandace Loualhati </p>
           </div>
   </div>
-    
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
       <p class="date">December 9, 2024</p>
     </div>
   </div>
-  
-    
   </div>
-  
-
-
 </header>
-
-
+    <div class="about-links">
+  <a href="https://www.pomona.edu" class="about-link" rel="" target="">
+     <span class="about-link-text">Pomona.Edu</span>
+  </a>
+  <a href="https://www.usa.gov/agency-index" class="about-link" rel="" target="">
+     <span class="about-link-text">Usa.Gov</span>
+  </a>
+</div>
+  </div>
+  <div class="about-contents"><main class="content column-page" id="quarto-document-content">
+<section id="web-scraping-the-pomona-college-home-page" class="level2">
+<h2 data-anchor-id="web-scraping-the-pomona-college-home-page">Web Scraping the Pomona College Home Page</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rvest)</span>
@@ -267,6 +270,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 # ℹ 12 more rows</code></pre>
 </div>
 </div>
+</section>
+<section id="checking-permission" class="level2">
+<h2 data-anchor-id="checking-permission">Checking Permission</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check permission</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(robotstxt)</span>
@@ -275,6 +281,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>[1] TRUE</code></pre>
 </div>
 </div>
+</section>
+<section id="analysis-of-pomona-scraping" class="level2">
+<h2 data-anchor-id="analysis-of-pomona-scraping">Analysis of Pomona Scraping</h2>
+<p>This function would specifically be useful for high school or undergraduate seniors in their college search. By minimizing the information provided on a certain page, students would quickly be able to just pull the information they’re most interested in. For example, if this hypothetical person needed to know the student:faculty ratio or the average class size, all they would need to do is type in “Admissions &amp; Aid” into the function to pull out this fact.</p>
+</section>
+<section id="web-scraping-the-government-agencies-page" class="level2">
+<h2 data-anchor-id="web-scraping-the-government-agencies-page">Web Scraping the Government Agencies Page</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a function that takes a letter as input and returns all the U.S. government agencies that start with that letter</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>gov_web_func <span class="ot">&lt;-</span> <span class="cf">function</span>(letter) {</span>
@@ -312,6 +325,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 # ℹ 592 more rows</code></pre>
 </div>
 </div>
+</section>
+<section id="checking-permission-1" class="level2">
+<h2 data-anchor-id="checking-permission-1">Checking Permission</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check permission</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">paths_allowed</span>(<span class="st">"https://www.usa.gov"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -319,10 +335,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>[1] TRUE</code></pre>
 </div>
 </div>
+</section>
+<section id="analysis-of-agency-scraping" class="level2">
+<h2 data-anchor-id="analysis-of-agency-scraping">Analysis of Agency Scraping</h2>
+<p>This function would be useful for anybody interested in government agencies. If somebody needed to quickly find the name or contact information for “U.S. federal government agencies, departments, corporations, instrumentalities, [or] government-sponsored enterprises,” and only knew the letter in which it started, this function would quickly be able to retrieve this information.</p>
 
 
-
-</main> <!-- /main -->
+</section>
+</main></div>
+</div>
+ <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -343,13 +365,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
       if (clz.startsWith('code-annotation-')) {                     

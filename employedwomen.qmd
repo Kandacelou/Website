@@ -1,15 +1,22 @@
 ---
 title: "Employed Women"
 description: |
-  Analysis of employed workers by gender (both full-time and part-time)
+  This is an analysis of the 'Employed Gender' data set from TidyTuesday. In this project, I depict the relationship between binary sex and percentages of employment in both full-time and part-time positions.
 author: Kandace Loualhati
-        original data from TidyTuesday
 date: September 17, 2024
 format: html
 execute: 
   warning: false
   message: false
+toc: false
+about:
+  template: trestles
+  links: 
+  - text: "TidyTuesday"
+    href: "https://github.com/rfordatascience/tidytuesday/tree/main/data/2019/2019-03-05"
 ---
+
+## Code for Full-Time Workers
 
 ```{r}
 # load in packages
@@ -20,8 +27,8 @@ library(dplyr)
 employed_gender <- read.csv("employed_gender.csv")
 # plot line plots depicting the difference in full-time workers (by gender, by year)
 ggplot(employed_gender) +
-  geom_line(aes(x = year, y = full_time_female), color = "pink") +
-  geom_line(aes(x = year, y = full_time_male), color = "lightblue") +
+  geom_line(aes(x = year, y = full_time_female), color = "hotpink") +
+  geom_line(aes(x = year, y = full_time_male), color = "blue") +
   labs(
     x = "Year",
     y = "% of Full-Time Workers",
@@ -29,10 +36,12 @@ ggplot(employed_gender) +
   )
 ```
 
+## Code for Part-Time Workers
+
 ```{r}
 ggplot(employed_gender) +
-  geom_line(aes(x = year, y = part_time_female), color = "pink") +
-  geom_line(aes(x = year, y = part_time_male), color = "lightblue") +
+  geom_line(aes(x = year, y = part_time_female), color = "hotpink") +
+  geom_line(aes(x = year, y = part_time_male), color = "blue") +
   labs(
     x = "Year",
     y = "% of Part-Time Workers",
@@ -40,4 +49,10 @@ ggplot(employed_gender) +
   )
 ```
 
-Code from: tidytuesday/data/2019/2019-03-05/employed_gender.csv at master · rfordatascience/tidytuesday (github.com)
+## Analysis
+
+The most interesting aspect of these two graphs is the inversion which occurs for the ratio of full-time to part-time work by sex. This is most likely due to the historical struggle for self-identified women in earning and maintaining full-time positions. If I were to continue with this project, I would want to explore the relationship between maternity leave/motherhood and this domination of part-time work for women.
+
+## Citation
+
+I retrieved the original csv file from a Tidy Tuesday data set. The raw data originates from the Bureau of Labor Statistics and the Census Bureau about women in the workforce. Jon Harmon, an advanced R programming consultant, then manipulated and divided the data, motivated by March being Women's History month.
