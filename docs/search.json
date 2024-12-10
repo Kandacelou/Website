@@ -7,235 +7,11 @@
     "text": "# load in packages\nlibrary(tidyverse)\nlibrary(readr)\nlibrary(dplyr)\nlibrary(knitr)\n# import data set\noffice_lines &lt;- read.csv(\"the-office_lines.csv\")\n# filter out Jim's lines when he says \"Pam\" in every season\nJim_lines &lt;- office_lines |&gt;\n  filter(Character == \"Jim\") |&gt;\n  filter(str_detect(Line, \"\\\\bPam[a-z]*\\\\b\")) |&gt;\n  group_by(Season, Episode_Number) |&gt;\n  summarize(n = n(), .groups = \"drop\")"
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About Me",
+    "objectID": "textanalysis.html#code-to-count-pam",
+    "href": "textanalysis.html#code-to-count-pam",
+    "title": "The Office Lines Analysis",
     "section": "",
-    "text": "Hi! My name is Kandace Loualhati (Loo-uhl-haw-tee).\nI’m currently:\n\nAn undergraduate at Pomona College (class of 2027)\nDouble majoring in Politics and Cognitive Science\nMinoring in Data Science"
-  },
-  {
-    "objectID": "SQL_proj.html",
-    "href": "SQL_proj.html",
-    "title": "SQL",
-    "section": "",
-    "text": "For this project, I am planning to recreate the Figure 1 graph from the National Library of Medicine. First, I am going to pull a dataset from SQL and read it into R to further manipulate and graph using ggplot. I plan on joining the Measurements dataset with the PI_Info dataset using their “Identifier” column and then using that new “ear_df” dataframe to select the specific information used in the original graph. From what I can see currently, the plot is a line-plot whose color is based on a combination of specific variables, so I will use that knowledge in my recreation. After the first half of the assignment is finished, I will further limit the data and create a new graph based on the “Age” variable from the Subjects dataset."
-  },
-  {
-    "objectID": "employedwomen.html",
-    "href": "employedwomen.html",
-    "title": "Employed Gender",
-    "section": "",
-    "text": "# load in packages\nlibrary(tidyverse)\nlibrary(readr)\nlibrary(dplyr)\n# read in csv file\nemployed_gender &lt;- read.csv(\"employed_gender.csv\")\n# plot line plots depicting the difference in full-time workers (by gender, by year)\nggplot(employed_gender) +\n  geom_line(aes(x = year, y = full_time_female), color = \"hotpink\") +\n  geom_line(aes(x = year, y = full_time_male), color = \"blue\") +\n  labs(\n    x = \"Year\",\n    y = \"% of Full-Time Workers\",\n    title = \"Layered Line Plot of Male vs Female Full-Time Workers\"\n  )"
-  },
-  {
-    "objectID": "DS02Presentation.html#web-scraping",
-    "href": "DS02Presentation.html#web-scraping",
-    "title": "DS02 Presentation",
-    "section": "Web Scraping!",
-    "text": "Web Scraping!\nGoals for this project:\n\nCreate a function that scrapes www.pomona.edu according to a specific topic the user inputs, returning all facts on that specific page\nCreate a function that scrapes www.usa.gov according to a certain letter the user inputs, returning all government agencies that start with that letter"
-  },
-  {
-    "objectID": "DS02Presentation.html#checking-permissions",
-    "href": "DS02Presentation.html#checking-permissions",
-    "title": "DS02 Presentation",
-    "section": "Checking permissions",
-    "text": "Checking permissions\n\n# check permission\nlibrary(robotstxt)\npaths_allowed(\"https://www.pomona.edu\")\n\n[1] TRUE\n\npaths_allowed(\"https://www.usa.gov\")\n\n[1] TRUE"
-  },
-  {
-    "objectID": "DS02Presentation.html#first-function",
-    "href": "DS02Presentation.html#first-function",
-    "title": "DS02 Presentation",
-    "section": "First Function",
-    "text": "First Function\n\n# load in packages\nlibrary(tidyverse)\nlibrary(rvest)\nlibrary(purrr)\n# create the function\nweb_func &lt;- function(n) {\n  title &lt;- gsub(\" \", \"-\", n)\n  title &lt;- gsub(\"and\", \"-\", title)\n  title &lt;- gsub(\"@\", \"at\", title)\n  title &lt;- gsub(\"&\", \"-\", title)\n  title &lt;- gsub(\"-+\", \"-\", title)\n  html &lt;- paste0(\"https://www.pomona.edu/\", title)\n  page &lt;- read_html(html)\nquantity &lt;- page |&gt;\n  html_elements(\".text-7xl\") |&gt;\n  html_text()\nfacts &lt;- page |&gt;\n  html_elements(\".fact .text-xl\") |&gt;\n  html_text()\n# account for the sites that have no facts\nif (length(facts) == 0)\n  facts &lt;- \"N/A\"\nif (length(quantity) == 0)\n  quantity &lt;- \"N/A\"\n# return a tibble\ndata &lt;- tibble(\n  topic = n,\n  quantity = quantity,\n  facts = facts\n)\nreturn(data)\n}"
-  },
-  {
-    "objectID": "DS02Presentation.html#some-issuesexplanation",
-    "href": "DS02Presentation.html#some-issuesexplanation",
-    "title": "DS02 Presentation",
-    "section": "Some Issues/Explanation",
-    "text": "Some Issues/Explanation\n\nThe gsub() function serves as a replacement operation; in order for “n” to properly be translated into the html code, I had to remove/replace whitespaces, symbols, and the word “and”\nIn order to account for the sites that don’t have any facts, I created an if-clause for those whose lengths equal 0 to return “N/A” (i.e., News & Events)"
-  },
-  {
-    "objectID": "DS02Presentation.html#mapping-the-func",
-    "href": "DS02Presentation.html#mapping-the-func",
-    "title": "DS02 Presentation",
-    "section": "Mapping the Func",
-    "text": "Mapping the Func\n\n# map the different options available\ndif_titles &lt;- c(\"Admissions & Aid\", \"Academics\", \"Life @ Pomona\", \"News & Events\", \"About\", \"Alumni & Families\")\nmap(dif_titles, web_func) |&gt;\n  list_rbind()\n\n# A tibble: 22 × 3\n   topic            quantity facts                                              \n   &lt;chr&gt;            &lt;chr&gt;    &lt;chr&gt;                                              \n 1 Admissions & Aid 20%      \"of our students are the first in their family to …\n 2 Admissions & Aid 8:1      \"Student to faculty ratio on average\"              \n 3 Admissions & Aid 94%      \"live on campus all four years, creating a tight c…\n 4 Admissions & Aid 250+     \"student-run clubs and organizations to choose fro…\n 5 Academics        8:1      \"Student-to-faculty ratio\"                         \n 6 Academics        600+     \"Classes offered at Pomona each year\"              \n 7 Academics        52%      \"Students who conduct research with faculty\"       \n 8 Academics        48       \"Majors offered at Pomona College\"                 \n 9 Life @ Pomona    94%      \"of students live on campus all four years\"        \n10 Life @ Pomona    6,000+   \"students you can meet from the Claremont Colleges…\n# ℹ 12 more rows"
-  },
-  {
-    "objectID": "DS02Presentation.html#second-function",
-    "href": "DS02Presentation.html#second-function",
-    "title": "DS02 Presentation",
-    "section": "Second Function",
-    "text": "Second Function\n\n# create a function that takes a letter as input and returns all the U.S. government agencies that start with that letter\ngov_web_func &lt;- function(letter) {\n  if (letter == \"A\")\n    gov_html &lt;- paste0(\"https://www.usa.gov/agency-index#\", letter)\n    else\n    gov_html &lt;- paste0(\"https://www.usa.gov/agency-index/\", letter, \"#\", letter)\n  gov_page &lt;- read_html(gov_html)\n  agencies &lt;- gov_page |&gt;\n    html_elements(\"#block-views-block-federal-agencies-block-1 .usa-accordion__button\") |&gt;\n    html_text()\n  agen_list &lt;- tibble(\n    agencies = agencies |&gt;\n      str_remove(\"\\n\")\n  )\n  return(agen_list)\n}"
-  },
-  {
-    "objectID": "DS02Presentation.html#some-issuesexplanation-1",
-    "href": "DS02Presentation.html#some-issuesexplanation-1",
-    "title": "DS02 Presentation",
-    "section": "Some Issues/Explanation",
-    "text": "Some Issues/Explanation\n\nThe letter “A” is the only letter that has a different HTML, so I created an if-else clause to account for that difference\nMost of the agencies ended with “\\n” so I removed that from the string\nOnly the letters A-W (except for Q) have government agencies\nAll the letters in the URL are uppercase"
-  },
-  {
-    "objectID": "DS02Presentation.html#mapping-the-func-1",
-    "href": "DS02Presentation.html#mapping-the-func-1",
-    "title": "DS02 Presentation",
-    "section": "Mapping the Func",
-    "text": "Mapping the Func\n\nall_letters &lt;- setdiff(toupper(letters[1:23]), \"Q\")\nmap(all_letters, gov_web_func) |&gt;\n  list_rbind()\n\n# A tibble: 602 × 1\n   agencies                                                            \n   &lt;chr&gt;                                                               \n 1 \"AbilityOne Commission  \"                                           \n 2 \"Access Board  \"                                                    \n 3 \"Administration for Children and Families        (ACF)      \"       \n 4 \"Administration for Community Living         (ACL)      \"           \n 5 \"Administration for Native Americans        (ANA)      \"            \n 6 \"Administrative Conference of the United States        (ACUS)      \"\n 7 \"Administrative Office of the U.S. Courts  \"                        \n 8 \"Advisory Council on Historic Preservation        (ACHP)      \"     \n 9 \"Africa Command  \"                                                  \n10 \"African Development Foundation        (USADF)      \"               \n# ℹ 592 more rows"
-  },
-  {
-    "objectID": "WebScraping.html",
-    "href": "WebScraping.html",
-    "title": "Web Scraping",
-    "section": "",
-    "text": "library(tidyverse)\nlibrary(rvest)\nlibrary(purrr)\n\n\n# create a function that inputs a specific title for a Pomona College website and returns the facts listed on that specific URL\nweb_func &lt;- function(n) {\n  title &lt;- gsub(\" \", \"-\", n)\n  title &lt;- gsub(\"and\", \"-\", title)\n  title &lt;- gsub(\"@\", \"at\", title)\n  title &lt;- gsub(\"&\", \"-\", title)\n  title &lt;- gsub(\"-+\", \"-\", title)\n  html &lt;- paste0(\"https://www.pomona.edu/\", title)\n  page &lt;- read_html(html)\nquantity &lt;- page |&gt;\n  html_elements(\".text-7xl\") |&gt;\n  html_text()\nfacts &lt;- page |&gt;\n  html_elements(\".fact .text-xl\") |&gt;\n  html_text()\n# account for the sites that have no facts\nif (length(facts) == 0)\n  facts &lt;- \"N/A\"\nif (length(quantity) == 0)\n  quantity &lt;- \"N/A\"\n# return a tibble\ndata &lt;- tibble(\n  topic = n,\n  quantity = quantity,\n  facts = facts\n)\nreturn(data)\n}\n\n# map the different options available\ndif_titles &lt;- c(\"Admissions & Aid\", \"Academics\", \"Life @ Pomona\", \"News & Events\", \"About\", \"Alumni & Families\")\nmap(dif_titles, web_func) |&gt;\n  list_rbind()\n\n# A tibble: 22 × 3\n   topic            quantity facts                                              \n   &lt;chr&gt;            &lt;chr&gt;    &lt;chr&gt;                                              \n 1 Admissions & Aid 20%      \"of our students are the first in their family to …\n 2 Admissions & Aid 8:1      \"Student to faculty ratio on average\"              \n 3 Admissions & Aid 94%      \"live on campus all four years, creating a tight c…\n 4 Admissions & Aid 250+     \"student-run clubs and organizations to choose fro…\n 5 Academics        8:1      \"Student-to-faculty ratio\"                         \n 6 Academics        600+     \"Classes offered at Pomona each year\"              \n 7 Academics        52%      \"Students who conduct research with faculty\"       \n 8 Academics        48       \"Majors offered at Pomona College\"                 \n 9 Life @ Pomona    94%      \"of students live on campus all four years\"        \n10 Life @ Pomona    6,000+   \"students you can meet from the Claremont Colleges…\n# ℹ 12 more rows"
-  },
-  {
-    "objectID": "calfiredamage.html",
-    "href": "calfiredamage.html",
-    "title": "California Fire Damage",
-    "section": "",
-    "text": "# load in packages\nlibrary(tidyverse)\nlibrary(readr)\n# read in csv file\ncalfire_damage &lt;- read.csv(\"calfire_damage.csv\")\n# graph the relationship between structures burnt and year \nggplot(calfire_damage, aes(x = year, y = structures)) +\n  geom_area(fill = \"orange\") +\n  geom_line() +\n  geom_point() +\n  labs(\n    x = \"Year\",\n    y = \"Numbers of Structures Destroyed\",\n    title = \"California Fire Damage Per Year\",\n  )"
-  },
-  {
-    "objectID": "calfiredamage.html#code",
-    "href": "calfiredamage.html#code",
-    "title": "California Fire Damage",
-    "section": "",
-    "text": "# load in packages\nlibrary(tidyverse)\nlibrary(readr)\n# read in csv file\ncalfire_damage &lt;- read.csv(\"calfire_damage.csv\")\n# graph the relationship between structures burnt and year \nggplot(calfire_damage, aes(x = year, y = structures)) +\n  geom_area(fill = \"orange\") +\n  geom_line() +\n  geom_point() +\n  labs(\n    x = \"Year\",\n    y = \"Numbers of Structures Destroyed\",\n    title = \"California Fire Damage Per Year\",\n  )"
-  },
-  {
-    "objectID": "calfiredamage.html#analysis",
-    "href": "calfiredamage.html#analysis",
-    "title": "California Fire Damage",
-    "section": "Analysis",
-    "text": "Analysis\nAccording to the data and the graph above, the number of structures burned down in California peaked in 2017 with 10,823 buildings destroyed. According to Cal Fire (https://www.fire.ca.gov/incidents/2017), a total of 1,599,640 acres burned through the span of 9,270 wildfires. This year, however, may have suffered more than the graph depicts as this source also has reported 10,868 structures destroyed, instead of 10,823. This insinuates that the data may not be entirely accurate or fully collected at the time of this report."
-  },
-  {
-    "objectID": "calfiredamage.html#citation",
-    "href": "calfiredamage.html#citation",
-    "title": "California Fire Damage",
-    "section": "Citation",
-    "text": "Citation\nI retrieved the original csv file from a Tidy Tuesday data set. This data originates from a Buzzfeed News article on wildfires in California by Peter Aldhous."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Kandace Loualhati",
-    "section": "",
-    "text": "Hi! My name is Kandace Loualhati. I’m an undergraduate at Pomona College (class of 2027) who’s double majoring in Politics and Cognitive Science as well as minoring in Data Science. My ultimate goal is to become a data scientist, specializing in statistical analysis and data mining."
-  },
-  {
-    "objectID": "index.html#about-me",
-    "href": "index.html#about-me",
-    "title": "Kandace Loualhati",
-    "section": "",
-    "text": "Hi! My name is Kandace Loualhati. I’m an undergraduate at Pomona College (class of 2027) who’s double majoring in Politics and Cognitive Science as well as minoring in Data Science. My ultimate goal is to become a data scientist, specializing in statistical analysis and data mining."
-  },
-  {
-    "objectID": "index.html#skills",
-    "href": "index.html#skills",
-    "title": "Kandace Loualhati",
-    "section": "Skills",
-    "text": "Skills\nProgramming languages & Computer Literacy: Proficient in Python and R\nLanguages: Bilingual in English and American Sign Language\nRelevant Courses Taken: Computer Science Using Python, Statistics, Cognitive Science, Foundations of Data Science"
-  },
-  {
-    "objectID": "index.html#experience",
-    "href": "index.html#experience",
-    "title": "Kandace Loualhati",
-    "section": "Experience",
-    "text": "Experience\nResearch\nServed as a researcher in Computational Chemistry and Novel Drug Design under the guidance of Roberto A. Garza-Lopez\nCollege Adviser\nAssisted students with the college application process and provided academic advising to students"
-  },
-  {
-    "objectID": "Permutationtest.html",
-    "href": "Permutationtest.html",
-    "title": "Permutation Test",
-    "section": "",
-    "text": "Although the sex ratio for newborn babies seems as though it should be a random phenomenon, an article by UTSouthwestern Medical Center explains that there may actually be a genetic explanation based on the biological father. If the assumption that sex was up to chance were true, then all men who have reproduced would always have had an equal amount of X chromosomes and Y chromosomes in their sperm; however, there may be an imbalance towards Y chromosomes for biological fathers, as there is a greater likelihood for women to have baby boys instead of girls. The null hypothesis assumes that there is no inherent relationship for the likelihood of the sex of a baby; thus, if the null hypothesis can be rejected then the alternative hypothesis - that sex is not equally probable - can further be explored scientifically. \nFor my analysis, I will be using the “Births” dataset from the MosaicData package in R Studio. I plan on finding the proportions of both female and male babies, to first reveal if there is in fact an inclination towards the male sex for newborns. Afterwards, I plan on creating a function to simulate the random categorization of babies based on sex, and further using this function to find the p value and ultimately determine if the null hypothesis can successfully be rejected."
-  },
-  {
-    "objectID": "employedwomen.html#code-for-full-time-workers",
-    "href": "employedwomen.html#code-for-full-time-workers",
-    "title": "Employed Gender",
-    "section": "",
-    "text": "# load in packages\nlibrary(tidyverse)\nlibrary(readr)\nlibrary(dplyr)\n# read in csv file\nemployed_gender &lt;- read.csv(\"employed_gender.csv\")\n# plot line plots depicting the difference in full-time workers (by gender, by year)\nggplot(employed_gender) +\n  geom_line(aes(x = year, y = full_time_female), color = \"hotpink\") +\n  geom_line(aes(x = year, y = full_time_male), color = \"blue\") +\n  labs(\n    x = \"Year\",\n    y = \"% of Full-Time Workers\",\n    title = \"Layered Line Plot of Male vs Female Full-Time Workers\"\n  )"
-  },
-  {
-    "objectID": "employedwomen.html#code-for-part-time-workers",
-    "href": "employedwomen.html#code-for-part-time-workers",
-    "title": "Employed Gender",
-    "section": "Code for Part-Time Workers",
-    "text": "Code for Part-Time Workers\n\nggplot(employed_gender) +\n  geom_line(aes(x = year, y = part_time_female), color = \"hotpink\") +\n  geom_line(aes(x = year, y = part_time_male), color = \"blue\") +\n  labs(\n    x = \"Year\",\n    y = \"% of Part-Time Workers\",\n    title = \"Layered Line Plot of Male vs Female Part-Time Workers\"\n  )"
-  },
-  {
-    "objectID": "employedwomen.html#analysis",
-    "href": "employedwomen.html#analysis",
-    "title": "Employed Gender",
-    "section": "Analysis",
-    "text": "Analysis\nThe most interesting aspect of these two graphs is the inversion which occurs for the ratio of full-time to part-time work by sex. This is most likely due to the historical struggle for self-identified women in earning and maintaining full-time positions. If I were to continue with this project, I would want to explore the relationship between maternity leave/motherhood and this domination of part-time work for women."
-  },
-  {
-    "objectID": "employedwomen.html#citation",
-    "href": "employedwomen.html#citation",
-    "title": "Employed Gender",
-    "section": "Citation",
-    "text": "Citation\nI retrieved the original csv file from a Tidy Tuesday data set. The raw data originates from the Bureau of Labor Statistics and the Census Bureau about women in the workforce. Jon Harmon, an advanced R programming consultant, then manipulated and divided the data, motivated by March being Women’s History month."
-  },
-  {
-    "objectID": "Permutationtest.html#research-question",
-    "href": "Permutationtest.html#research-question",
-    "title": "Permutation Test",
-    "section": "",
-    "text": "Although the sex ratio for newborn babies seems as though it should be a random phenomenon, an article by UTSouthwestern Medical Center explains that there may actually be a genetic explanation based on the biological father. If the assumption that sex was up to chance were true, then all men who have reproduced would always have had an equal amount of X chromosomes and Y chromosomes in their sperm; however, there may be an imbalance towards Y chromosomes for biological fathers, as there is a greater likelihood for women to have baby boys instead of girls. The null hypothesis assumes that there is no inherent relationship for the likelihood of the sex of a baby; thus, if the null hypothesis can be rejected then the alternative hypothesis - that sex is not equally probable - can further be explored scientifically. \nFor my analysis, I will be using the “Births” dataset from the MosaicData package in R Studio. I plan on finding the proportions of both female and male babies, to first reveal if there is in fact an inclination towards the male sex for newborns. Afterwards, I plan on creating a function to simulate the random categorization of babies based on sex, and further using this function to find the p value and ultimately determine if the null hypothesis can successfully be rejected."
-  },
-  {
-    "objectID": "Permutationtest.html#function-and-p-value",
-    "href": "Permutationtest.html#function-and-p-value",
-    "title": "Permutation Test",
-    "section": "Function and P-Value",
-    "text": "Function and P-Value\n\n# load in packages\nlibrary(tidyverse)\nlibrary(readr)\nlibrary(dplyr)\nlibrary(knitr)\nlibrary(openintro)\nlibrary(mosaicData)\n\n\n# set seed for reproducability \nset.seed(47)\n# import data set\nbaby_data &lt;- births\n# find proportion of female babies born\nfemale_prop &lt;- baby_data |&gt;\n  summarize(proportion = mean(sex_baby == \"female\")) |&gt;\n  pull()\nfemale_prop\n\n[1] 0.4533333\n\n# find proportion of male babies born\nmale_prop &lt;- baby_data |&gt;\n  summarize(proportion = mean(sex_baby == \"male\")) |&gt;\n  pull()\nmale_prop\n\n[1] 0.5466667\n\n# create a function\ntotal_babies &lt;- nrow(baby_data)\nrandom_sex &lt;- function(rep, total_babies) {\n  result = sample(c(\"female\", \"male\"), size = total_babies,\n                 replace = TRUE, prob = c(0.5, 0.5))\n  return(mean(result == \"male\"))\n}\n# find p value\nnum_rep &lt;- 10000\nrandom_map &lt;- map_dbl(1:num_rep, random_sex, total_babies)\np_val &lt;- sum(random_map &gt;= male_prop) / num_rep\nprint(p_val)\n\n[1] 0.1407"
-  },
-  {
-    "objectID": "Permutationtest.html#sex-ratio-bar-plot",
-    "href": "Permutationtest.html#sex-ratio-bar-plot",
-    "title": "Permutation Test",
-    "section": "Sex-Ratio Bar Plot",
-    "text": "Sex-Ratio Bar Plot\n\n# create a bar plot showing the difference in sex ratio \nggplot(data.frame(baby_data), aes(x = sex_baby)) +\n  geom_bar(color = \"black\", fill = \"lightpink\") +\n  labs(\n    title = \"Biological Sex Ratio for Newborn Babies\",\n    x = \"Sex\",\n    y = \"Count\"\n  )"
-  },
-  {
-    "objectID": "Permutationtest.html#about-the-bar-plot",
-    "href": "Permutationtest.html#about-the-bar-plot",
-    "title": "Permutation Test",
-    "section": "About The Bar Plot",
-    "text": "About The Bar Plot\nThis is a graph depicting the natural imbalance in the biological sex ratio for newborns. There is approximately a 10% difference between females and males, for this data set alone."
-  },
-  {
-    "objectID": "Permutationtest.html#permutation-test-histogram",
-    "href": "Permutationtest.html#permutation-test-histogram",
-    "title": "Permutation Test",
-    "section": "Permutation Test Histogram",
-    "text": "Permutation Test Histogram\n\n# create a new data frame for graphing\nsim_data &lt;- data.frame(simulated_male_prop = random_map)\n# create a histogram depicting the proportion of male births and the p-value\nggplot(sim_data, aes(x = simulated_male_prop)) +\n  geom_histogram(binwidth = 0.01, color = \"black\", fill = \"lightblue\") +\n  geom_vline(xintercept = male_prop, color = \"hotpink\", linetype = \"dashed\", size = 1) +\n  labs(title = \"Distribution of Simulated Male Proportions\",\n       x = \"Simulated Male Proportion\",\n       y = \"Frequency\")"
-  },
-  {
-    "objectID": "Permutationtest.html#about-the-histogram",
-    "href": "Permutationtest.html#about-the-histogram",
-    "title": "Permutation Test",
-    "section": "About The Histogram",
-    "text": "About The Histogram\nThis is a graph showing the tendency for male proportions, when simulated many times, to arrive at the center (or around 0.5 out of the birthing population). The pink v-line, or the x-intercept, depicts the actual male proportion in birthing rates (0.5466667); however, although this line is slightly skewed to the right, the difference is not significant."
-  },
-  {
-    "objectID": "Permutationtest.html#conclusion",
-    "href": "Permutationtest.html#conclusion",
-    "title": "Permutation Test",
-    "section": "Conclusion",
-    "text": "Conclusion\nUltimately, although my code did prove that there is a slight inclination for the probability that women will birth male babies instead of females, with the P-Value being 0.1407, the null hypothesis that this is due to complete randomness, cannot confidently be rejected. There is not strong enough evidence against the null hypothesis; however, if I were to repeat this analysis, I would do another permutation test using variables for both the baby’s sex and the father’s X/Y ratio, for there may be a stronger relationship there. Currently, there is not much research on this correlation, so I’d most likely need to conduct my own research or wait until somebody believes that this imbalance in the probability of sexes is significant enough to explore, despite the P-Value."
-  },
-  {
-    "objectID": "Permutationtest.html#citation",
-    "href": "Permutationtest.html#citation",
-    "title": "Permutation Test",
-    "section": "Citation",
-    "text": "Citation\nI retrieved the original data from the MosaicData package within R. The data for this ‘Births’ package, however, originated from the National Vital Statistics System and exported to csv by Robert Kern."
+    "text": "# load in packages\nlibrary(tidyverse)\nlibrary(readr)\nlibrary(dplyr)\nlibrary(knitr)\n# import data set\noffice_lines &lt;- read.csv(\"the-office_lines.csv\")\n# filter out Jim's lines when he says \"Pam\" in every season\nJim_lines &lt;- office_lines |&gt;\n  filter(Character == \"Jim\") |&gt;\n  filter(str_detect(Line, \"\\\\bPam[a-z]*\\\\b\")) |&gt;\n  group_by(Season, Episode_Number) |&gt;\n  summarize(n = n(), .groups = \"drop\")"
   },
   {
     "objectID": "textanalysis.html#bar-plot-of-pam-references",
@@ -243,13 +19,6 @@
     "title": "The Office Lines Analysis",
     "section": "Bar Plot of ‘Pam’ References",
     "text": "Bar Plot of ‘Pam’ References\n\n# plot of Jim's frequency of the word \"Pam\"\nggplot(Jim_lines, aes(x = Episode_Number, y = n, fill = Season)) +\n  geom_col() +\n  labs(\n    x = \"Episode Number\",\n    y = \"# of 'Pam' Occurrences\", \n    title = \"How Many Times Jim Said 'Pam' in 'The Office'\"\n  )"
-  },
-  {
-    "objectID": "textanalysis.html#code-to-count-pam",
-    "href": "textanalysis.html#code-to-count-pam",
-    "title": "The Office Lines Analysis",
-    "section": "",
-    "text": "# load in packages\nlibrary(tidyverse)\nlibrary(readr)\nlibrary(dplyr)\nlibrary(knitr)\n# import data set\noffice_lines &lt;- read.csv(\"the-office_lines.csv\")\n# filter out Jim's lines when he says \"Pam\" in every season\nJim_lines &lt;- office_lines |&gt;\n  filter(Character == \"Jim\") |&gt;\n  filter(str_detect(Line, \"\\\\bPam[a-z]*\\\\b\")) |&gt;\n  group_by(Season, Episode_Number) |&gt;\n  summarize(n = n(), .groups = \"drop\")"
   },
   {
     "objectID": "textanalysis.html#analysis-of-pam-counting",
@@ -278,6 +47,20 @@
     "title": "The Office Lines Analysis",
     "section": "Citation",
     "text": "Citation\nI retrieved the original data from a Kaggle dataset. This data was webscraped from OfficeQuotes.net and includes every line in ‘The Office’ from every season that aired on television."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About Me",
+    "section": "",
+    "text": "Hi! My name is Kandace Loualhati (Loo-uhl-haw-tee).\nI’m currently:\n\nAn undergraduate at Pomona College (class of 2027)\nDouble majoring in Politics and Cognitive Science\nMinoring in Data Science"
+  },
+  {
+    "objectID": "SQL_proj.html",
+    "href": "SQL_proj.html",
+    "title": "SQL",
+    "section": "",
+    "text": "For this project, I am planning to recreate the Figure 1 graph from the National Library of Medicine. First, I am going to pull a dataset from SQL and read it into R to further manipulate and graph using ggplot. I plan on joining the Measurements dataset with the PI_Info dataset using their “Identifier” column and then using that new “ear_df” dataframe to select the specific information used in the original graph. From what I can see currently, the plot is a line-plot whose color is based on a combination of specific variables, so I will use that knowledge in my recreation. After the first half of the assignment is finished, I will further limit the data and create a new graph based on the “Age” variable from the Subjects dataset."
   },
   {
     "objectID": "SQL_proj.html#introduction",
@@ -350,6 +133,104 @@
     "text": "Citation\nI retrieved the original data from an article published by Susan E. Voss in the National Library of Medicine. The starter code comes from Johanna S. Hardin, a Pomona College professor of mathematics and statistics, for a mini-project in her Foundations of Data Science course."
   },
   {
+    "objectID": "employedwomen.html",
+    "href": "employedwomen.html",
+    "title": "Employed Gender",
+    "section": "",
+    "text": "# load in packages\nlibrary(tidyverse)\nlibrary(readr)\nlibrary(dplyr)\n# read in csv file\nemployed_gender &lt;- read.csv(\"employed_gender.csv\")\n# plot line plots depicting the difference in full-time workers (by gender, by year)\nggplot(employed_gender) +\n  geom_line(aes(x = year, y = full_time_female), color = \"hotpink\") +\n  geom_line(aes(x = year, y = full_time_male), color = \"blue\") +\n  labs(\n    x = \"Year\",\n    y = \"% of Full-Time Workers\",\n    title = \"Layered Line Plot of Male vs Female Full-Time Workers\"\n  )"
+  },
+  {
+    "objectID": "employedwomen.html#code-for-full-time-workers",
+    "href": "employedwomen.html#code-for-full-time-workers",
+    "title": "Employed Gender",
+    "section": "",
+    "text": "# load in packages\nlibrary(tidyverse)\nlibrary(readr)\nlibrary(dplyr)\n# read in csv file\nemployed_gender &lt;- read.csv(\"employed_gender.csv\")\n# plot line plots depicting the difference in full-time workers (by gender, by year)\nggplot(employed_gender) +\n  geom_line(aes(x = year, y = full_time_female), color = \"hotpink\") +\n  geom_line(aes(x = year, y = full_time_male), color = \"blue\") +\n  labs(\n    x = \"Year\",\n    y = \"% of Full-Time Workers\",\n    title = \"Layered Line Plot of Male vs Female Full-Time Workers\"\n  )"
+  },
+  {
+    "objectID": "employedwomen.html#code-for-part-time-workers",
+    "href": "employedwomen.html#code-for-part-time-workers",
+    "title": "Employed Gender",
+    "section": "Code for Part-Time Workers",
+    "text": "Code for Part-Time Workers\n\nggplot(employed_gender) +\n  geom_line(aes(x = year, y = part_time_female), color = \"hotpink\") +\n  geom_line(aes(x = year, y = part_time_male), color = \"blue\") +\n  labs(\n    x = \"Year\",\n    y = \"% of Part-Time Workers\",\n    title = \"Layered Line Plot of Male vs Female Part-Time Workers\"\n  )"
+  },
+  {
+    "objectID": "employedwomen.html#analysis",
+    "href": "employedwomen.html#analysis",
+    "title": "Employed Gender",
+    "section": "Analysis",
+    "text": "Analysis\nThe most interesting aspect of these two graphs is the inversion which occurs for the ratio of full-time to part-time work by sex. This is most likely due to the historical struggle for self-identified women in earning and maintaining full-time positions. If I were to continue with this project, I would want to explore the relationship between maternity leave/motherhood and this domination of part-time work for women."
+  },
+  {
+    "objectID": "employedwomen.html#citation",
+    "href": "employedwomen.html#citation",
+    "title": "Employed Gender",
+    "section": "Citation",
+    "text": "Citation\nI retrieved the original csv file from a Tidy Tuesday data set. The raw data originates from the Bureau of Labor Statistics and the Census Bureau about women in the workforce. Jon Harmon, an advanced R programming consultant, then manipulated and divided the data, motivated by March being Women’s History month."
+  },
+  {
+    "objectID": "DS02Presentation.html#web-scraping",
+    "href": "DS02Presentation.html#web-scraping",
+    "title": "DS02 Presentation",
+    "section": "Web Scraping!",
+    "text": "Web Scraping!\nGoals for this project:\n\nCreate a function that scrapes www.pomona.edu according to a specific topic the user inputs, returning all facts on that specific page\nCreate a function that scrapes www.usa.gov according to a certain letter the user inputs, returning all government agencies that start with that letter"
+  },
+  {
+    "objectID": "DS02Presentation.html#checking-permissions",
+    "href": "DS02Presentation.html#checking-permissions",
+    "title": "DS02 Presentation",
+    "section": "Checking permissions",
+    "text": "Checking permissions\n\n# check permission\nlibrary(robotstxt)\npaths_allowed(\"https://www.pomona.edu\")\n\n[1] TRUE\n\npaths_allowed(\"https://www.usa.gov\")\n\n[1] TRUE"
+  },
+  {
+    "objectID": "DS02Presentation.html#first-function",
+    "href": "DS02Presentation.html#first-function",
+    "title": "DS02 Presentation",
+    "section": "First Function",
+    "text": "First Function\n\n# load in packages\nlibrary(tidyverse)\nlibrary(rvest)\nlibrary(purrr)\n# create the function\nweb_func &lt;- function(n) {\n  title &lt;- gsub(\" \", \"-\", n)\n  title &lt;- gsub(\"and\", \"-\", title)\n  title &lt;- gsub(\"@\", \"at\", title)\n  title &lt;- gsub(\"&\", \"-\", title)\n  title &lt;- gsub(\"-+\", \"-\", title)\n  html &lt;- paste0(\"https://www.pomona.edu/\", title)\n  page &lt;- read_html(html)\nquantity &lt;- page |&gt;\n  html_elements(\".text-7xl\") |&gt;\n  html_text()\nfacts &lt;- page |&gt;\n  html_elements(\".fact .text-xl\") |&gt;\n  html_text()\n# account for the sites that have no facts\nif (length(facts) == 0)\n  facts &lt;- \"N/A\"\nif (length(quantity) == 0)\n  quantity &lt;- \"N/A\"\n# return a tibble\ndata &lt;- tibble(\n  topic = n,\n  quantity = quantity,\n  facts = facts\n)\nreturn(data)\n}"
+  },
+  {
+    "objectID": "DS02Presentation.html#some-issuesexplanation",
+    "href": "DS02Presentation.html#some-issuesexplanation",
+    "title": "DS02 Presentation",
+    "section": "Some Issues/Explanation",
+    "text": "Some Issues/Explanation\n\nThe gsub() function serves as a replacement operation; in order for “n” to properly be translated into the html code, I had to remove/replace whitespaces, symbols, and the word “and”\nIn order to account for the sites that don’t have any facts, I created an if-clause for those whose lengths equal 0 to return “N/A” (i.e., News & Events)"
+  },
+  {
+    "objectID": "DS02Presentation.html#mapping-the-func",
+    "href": "DS02Presentation.html#mapping-the-func",
+    "title": "DS02 Presentation",
+    "section": "Mapping the Func",
+    "text": "Mapping the Func\n\n# map the different options available\ndif_titles &lt;- c(\"Admissions & Aid\", \"Academics\", \"Life @ Pomona\", \"News & Events\", \"About\", \"Alumni & Families\")\nmap(dif_titles, web_func) |&gt;\n  list_rbind()\n\n# A tibble: 22 × 3\n   topic            quantity facts                                              \n   &lt;chr&gt;            &lt;chr&gt;    &lt;chr&gt;                                              \n 1 Admissions & Aid 20%      \"of our students are the first in their family to …\n 2 Admissions & Aid 8:1      \"Student to faculty ratio on average\"              \n 3 Admissions & Aid 94%      \"live on campus all four years, creating a tight c…\n 4 Admissions & Aid 250+     \"student-run clubs and organizations to choose fro…\n 5 Academics        8:1      \"Student-to-faculty ratio\"                         \n 6 Academics        600+     \"Classes offered at Pomona each year\"              \n 7 Academics        52%      \"Students who conduct research with faculty\"       \n 8 Academics        48       \"Majors offered at Pomona College\"                 \n 9 Life @ Pomona    94%      \"of students live on campus all four years\"        \n10 Life @ Pomona    6,000+   \"students you can meet from the Claremont Colleges…\n# ℹ 12 more rows"
+  },
+  {
+    "objectID": "DS02Presentation.html#second-function",
+    "href": "DS02Presentation.html#second-function",
+    "title": "DS02 Presentation",
+    "section": "Second Function",
+    "text": "Second Function\n\n# create a function that takes a letter as input and returns all the U.S. government agencies that start with that letter\ngov_web_func &lt;- function(letter) {\n  if (letter == \"A\")\n    gov_html &lt;- paste0(\"https://www.usa.gov/agency-index#\", letter)\n    else\n    gov_html &lt;- paste0(\"https://www.usa.gov/agency-index/\", letter, \"#\", letter)\n  gov_page &lt;- read_html(gov_html)\n  agencies &lt;- gov_page |&gt;\n    html_elements(\"#block-views-block-federal-agencies-block-1 .usa-accordion__button\") |&gt;\n    html_text()\n  agen_list &lt;- tibble(\n    agencies = agencies |&gt;\n      str_remove(\"\\n\")\n  )\n  return(agen_list)\n}"
+  },
+  {
+    "objectID": "DS02Presentation.html#some-issuesexplanation-1",
+    "href": "DS02Presentation.html#some-issuesexplanation-1",
+    "title": "DS02 Presentation",
+    "section": "Some Issues/Explanation",
+    "text": "Some Issues/Explanation\n\nThe letter “A” is the only letter that has a different HTML, so I created an if-else clause to account for that difference\nMost of the agencies ended with “\\n” so I removed that from the string\nOnly the letters A-W (except for Q) have government agencies\nAll the letters in the URL are uppercase"
+  },
+  {
+    "objectID": "DS02Presentation.html#mapping-the-func-1",
+    "href": "DS02Presentation.html#mapping-the-func-1",
+    "title": "DS02 Presentation",
+    "section": "Mapping the Func",
+    "text": "Mapping the Func\n\nall_letters &lt;- setdiff(toupper(letters[1:23]), \"Q\")\nmap(all_letters, gov_web_func) |&gt;\n  list_rbind()\n\n# A tibble: 602 × 1\n   agencies                                                            \n   &lt;chr&gt;                                                               \n 1 \"AbilityOne Commission  \"                                           \n 2 \"Access Board  \"                                                    \n 3 \"Administration for Children and Families        (ACF)      \"       \n 4 \"Administration for Community Living         (ACL)      \"           \n 5 \"Administration for Native Americans        (ANA)      \"            \n 6 \"Administrative Conference of the United States        (ACUS)      \"\n 7 \"Administrative Office of the U.S. Courts  \"                        \n 8 \"Advisory Council on Historic Preservation        (ACHP)      \"     \n 9 \"Africa Command  \"                                                  \n10 \"African Development Foundation        (USADF)      \"               \n# ℹ 592 more rows"
+  },
+  {
+    "objectID": "WebScraping.html",
+    "href": "WebScraping.html",
+    "title": "Web Scraping",
+    "section": "",
+    "text": "library(tidyverse)\nlibrary(rvest)\nlibrary(purrr)\n\n\n# create a function that inputs a specific title for a Pomona College website and returns the facts listed on that specific URL\nweb_func &lt;- function(n) {\n  title &lt;- gsub(\" \", \"-\", n)\n  title &lt;- gsub(\"and\", \"-\", title)\n  title &lt;- gsub(\"@\", \"at\", title)\n  title &lt;- gsub(\"&\", \"-\", title)\n  title &lt;- gsub(\"-+\", \"-\", title)\n  html &lt;- paste0(\"https://www.pomona.edu/\", title)\n  page &lt;- read_html(html)\nquantity &lt;- page |&gt;\n  html_elements(\".text-7xl\") |&gt;\n  html_text()\nfacts &lt;- page |&gt;\n  html_elements(\".fact .text-xl\") |&gt;\n  html_text()\n# account for the sites that have no facts\nif (length(facts) == 0)\n  facts &lt;- \"N/A\"\nif (length(quantity) == 0)\n  quantity &lt;- \"N/A\"\n# return a tibble\ndata &lt;- tibble(\n  topic = n,\n  quantity = quantity,\n  facts = facts\n)\nreturn(data)\n}\n\n# map the different options available\ndif_titles &lt;- c(\"Admissions & Aid\", \"Academics\", \"Life @ Pomona\", \"News & Events\", \"About\", \"Alumni & Families\")\nmap(dif_titles, web_func) |&gt;\n  list_rbind()\n\n# A tibble: 22 × 3\n   topic            quantity facts                                              \n   &lt;chr&gt;            &lt;chr&gt;    &lt;chr&gt;                                              \n 1 Admissions & Aid 20%      \"of our students are the first in their family to …\n 2 Admissions & Aid 8:1      \"Student to faculty ratio on average\"              \n 3 Admissions & Aid 94%      \"live on campus all four years, creating a tight c…\n 4 Admissions & Aid 250+     \"student-run clubs and organizations to choose fro…\n 5 Academics        8:1      \"Student-to-faculty ratio\"                         \n 6 Academics        600+     \"Classes offered at Pomona each year\"              \n 7 Academics        52%      \"Students who conduct research with faculty\"       \n 8 Academics        48       \"Majors offered at Pomona College\"                 \n 9 Life @ Pomona    94%      \"of students live on campus all four years\"        \n10 Life @ Pomona    6,000+   \"students you can meet from the Claremont Colleges…\n# ℹ 12 more rows"
+  },
+  {
     "objectID": "WebScraping.html#web-scraping-the-pomona-college-home-page",
     "href": "WebScraping.html#web-scraping-the-pomona-college-home-page",
     "title": "Web Scraping",
@@ -390,5 +271,124 @@
     "title": "Web Scraping",
     "section": "Analysis of Agency Scraping",
     "text": "Analysis of Agency Scraping\nThis function would be useful for anybody interested in government agencies. If somebody needed to quickly find the name or contact information for “U.S. federal government agencies, departments, corporations, instrumentalities, [or] government-sponsored enterprises,” and only knew the letter in which it started, this function would quickly be able to retrieve this information."
+  },
+  {
+    "objectID": "calfiredamage.html",
+    "href": "calfiredamage.html",
+    "title": "California Fire Damage",
+    "section": "",
+    "text": "# load in packages\nlibrary(tidyverse)\nlibrary(readr)\n# read in csv file\ncalfire_damage &lt;- read.csv(\"calfire_damage.csv\")\n# graph the relationship between structures burnt and year \nggplot(calfire_damage, aes(x = year, y = structures)) +\n  geom_area(fill = \"orange\") +\n  geom_line() +\n  geom_point() +\n  labs(\n    x = \"Year\",\n    y = \"Numbers of Structures Destroyed\",\n    title = \"California Fire Damage Per Year\",\n  )"
+  },
+  {
+    "objectID": "calfiredamage.html#code",
+    "href": "calfiredamage.html#code",
+    "title": "California Fire Damage",
+    "section": "",
+    "text": "# load in packages\nlibrary(tidyverse)\nlibrary(readr)\n# read in csv file\ncalfire_damage &lt;- read.csv(\"calfire_damage.csv\")\n# graph the relationship between structures burnt and year \nggplot(calfire_damage, aes(x = year, y = structures)) +\n  geom_area(fill = \"orange\") +\n  geom_line() +\n  geom_point() +\n  labs(\n    x = \"Year\",\n    y = \"Numbers of Structures Destroyed\",\n    title = \"California Fire Damage Per Year\",\n  )"
+  },
+  {
+    "objectID": "calfiredamage.html#analysis",
+    "href": "calfiredamage.html#analysis",
+    "title": "California Fire Damage",
+    "section": "Analysis",
+    "text": "Analysis\nAccording to the data and the graph above, the number of structures burned down in California peaked in 2017 with 10,823 buildings destroyed. According to Cal Fire (https://www.fire.ca.gov/incidents/2017), a total of 1,599,640 acres burned through the span of 9,270 wildfires. This year, however, may have suffered more than the graph depicts as this source also has reported 10,868 structures destroyed, instead of 10,823. This insinuates that the data may not be entirely accurate or fully collected at the time of this report."
+  },
+  {
+    "objectID": "calfiredamage.html#citation",
+    "href": "calfiredamage.html#citation",
+    "title": "California Fire Damage",
+    "section": "Citation",
+    "text": "Citation\nI retrieved the original csv file from a Tidy Tuesday data set. This data originates from a Buzzfeed News article on wildfires in California by Peter Aldhous."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Kandace Loualhati",
+    "section": "",
+    "text": "Hi! My name is Kandace Loualhati. I’m an undergraduate at Pomona College (class of 2027) who’s double majoring in Politics and Cognitive Science as well as minoring in Data Science. My ultimate goal is to become a data scientist, specializing in statistical analysis and data mining."
+  },
+  {
+    "objectID": "index.html#about-me",
+    "href": "index.html#about-me",
+    "title": "Kandace Loualhati",
+    "section": "",
+    "text": "Hi! My name is Kandace Loualhati. I’m an undergraduate at Pomona College (class of 2027) who’s double majoring in Politics and Cognitive Science as well as minoring in Data Science. My ultimate goal is to become a data scientist, specializing in statistical analysis and data mining."
+  },
+  {
+    "objectID": "index.html#skills",
+    "href": "index.html#skills",
+    "title": "Kandace Loualhati",
+    "section": "Skills",
+    "text": "Skills\nProgramming languages & Computer Literacy: Proficient in Python and R\nLanguages: Bilingual in English and American Sign Language\nRelevant Courses Taken: Computer Science Using Python, Statistics, Cognitive Science, Foundations of Data Science"
+  },
+  {
+    "objectID": "index.html#experience",
+    "href": "index.html#experience",
+    "title": "Kandace Loualhati",
+    "section": "Experience",
+    "text": "Experience\nResearch\nServed as a researcher in Computational Chemistry and Novel Drug Design under the guidance of Roberto A. Garza-Lopez\nCollege Adviser\nAssisted students with the college application process and provided academic advising to students"
+  },
+  {
+    "objectID": "Permutationtest.html",
+    "href": "Permutationtest.html",
+    "title": "Permutation Test",
+    "section": "",
+    "text": "Although the sex ratio for newborn babies seems as though it should be a random phenomenon, an article by UTSouthwestern Medical Center explains that there may actually be a genetic explanation based on the biological father. If the assumption that sex was up to chance were true, then all men who have reproduced would always have had an equal amount of X chromosomes and Y chromosomes in their sperm; however, there may be an imbalance towards Y chromosomes for biological fathers, as there is a greater likelihood for women to have baby boys instead of girls. The null hypothesis assumes that there is no inherent relationship for the likelihood of the sex of a baby; thus, if the null hypothesis can be rejected then the alternative hypothesis - that sex is not equally probable - can further be explored scientifically. \nFor my analysis, I will be using the “Births” dataset from the MosaicData package in R Studio. I plan on finding the proportions of both female and male babies, to first reveal if there is in fact an inclination towards the male sex for newborns. Afterwards, I plan on creating a function to simulate the random categorization of babies based on sex, and further using this function to find the p value and ultimately determine if the null hypothesis can successfully be rejected."
+  },
+  {
+    "objectID": "Permutationtest.html#research-question",
+    "href": "Permutationtest.html#research-question",
+    "title": "Permutation Test",
+    "section": "",
+    "text": "Although the sex ratio for newborn babies seems as though it should be a random phenomenon, an article by UTSouthwestern Medical Center explains that there may actually be a genetic explanation based on the biological father. If the assumption that sex was up to chance were true, then all men who have reproduced would always have had an equal amount of X chromosomes and Y chromosomes in their sperm; however, there may be an imbalance towards Y chromosomes for biological fathers, as there is a greater likelihood for women to have baby boys instead of girls. The null hypothesis assumes that there is no inherent relationship for the likelihood of the sex of a baby; thus, if the null hypothesis can be rejected then the alternative hypothesis - that sex is not equally probable - can further be explored scientifically. \nFor my analysis, I will be using the “Births” dataset from the MosaicData package in R Studio. I plan on finding the proportions of both female and male babies, to first reveal if there is in fact an inclination towards the male sex for newborns. Afterwards, I plan on creating a function to simulate the random categorization of babies based on sex, and further using this function to find the p value and ultimately determine if the null hypothesis can successfully be rejected."
+  },
+  {
+    "objectID": "Permutationtest.html#function-and-p-value",
+    "href": "Permutationtest.html#function-and-p-value",
+    "title": "Permutation Test",
+    "section": "Function and P-Value",
+    "text": "Function and P-Value\n\n# load in packages\nlibrary(tidyverse)\nlibrary(readr)\nlibrary(dplyr)\nlibrary(knitr)\nlibrary(openintro)\nlibrary(mosaicData)\n\n\n# set seed for reproducability \nset.seed(47)\n# import data set\nbaby_data &lt;- births\n# find proportion of female babies born\nfemale_prop &lt;- baby_data |&gt;\n  summarize(proportion = mean(sex_baby == \"female\")) |&gt;\n  pull()\nfemale_prop\n\n[1] 0.4533333\n\n# find proportion of male babies born\nmale_prop &lt;- baby_data |&gt;\n  summarize(proportion = mean(sex_baby == \"male\")) |&gt;\n  pull()\nmale_prop\n\n[1] 0.5466667\n\n# create a function\ntotal_babies &lt;- nrow(baby_data)\nrandom_sex &lt;- function(rep, total_babies) {\n  result = sample(c(\"female\", \"male\"), size = total_babies,\n                 replace = TRUE, prob = c(0.5, 0.5))\n  return(mean(result == \"male\"))\n}\n# find p value\nnum_rep &lt;- 10000\nrandom_map &lt;- map_dbl(1:num_rep, random_sex, total_babies)\np_val &lt;- sum(random_map &gt;= male_prop) / num_rep\nprint(p_val)\n\n[1] 0.1407"
+  },
+  {
+    "objectID": "Permutationtest.html#sex-ratio-bar-plot",
+    "href": "Permutationtest.html#sex-ratio-bar-plot",
+    "title": "Permutation Test",
+    "section": "Sex-Ratio Bar Plot",
+    "text": "Sex-Ratio Bar Plot\n\n# create a bar plot showing the difference in sex ratio \nggplot(data.frame(baby_data), aes(x = sex_baby)) +\n  geom_bar(color = \"black\", fill = \"lightpink\") +\n  labs(\n    title = \"Biological Sex Ratio for Newborn Babies\",\n    x = \"Sex\",\n    y = \"Count\"\n  )"
+  },
+  {
+    "objectID": "Permutationtest.html#about-the-bar-plot",
+    "href": "Permutationtest.html#about-the-bar-plot",
+    "title": "Permutation Test",
+    "section": "About The Bar Plot",
+    "text": "About The Bar Plot\nThis is a graph depicting the natural imbalance in the biological sex ratio for newborns. There is approximately a 10% difference between females and males, for this data set alone."
+  },
+  {
+    "objectID": "Permutationtest.html#permutation-test-histogram",
+    "href": "Permutationtest.html#permutation-test-histogram",
+    "title": "Permutation Test",
+    "section": "Permutation Test Histogram",
+    "text": "Permutation Test Histogram\n\n# create a new data frame for graphing\nsim_data &lt;- data.frame(simulated_male_prop = random_map)\n# create a histogram depicting the proportion of male births and the p-value\nggplot(sim_data, aes(x = simulated_male_prop)) +\n  geom_histogram(binwidth = 0.01, color = \"black\", fill = \"lightblue\") +\n  geom_vline(xintercept = male_prop, color = \"hotpink\", linetype = \"dashed\", size = 1) +\n  labs(title = \"Distribution of Simulated Male Proportions\",\n       x = \"Simulated Male Proportion\",\n       y = \"Frequency\")"
+  },
+  {
+    "objectID": "Permutationtest.html#about-the-histogram",
+    "href": "Permutationtest.html#about-the-histogram",
+    "title": "Permutation Test",
+    "section": "About The Histogram",
+    "text": "About The Histogram\nThis is a graph showing the tendency for male proportions, when simulated many times, to arrive at the center (or around 0.5 out of the birthing population). The pink v-line, or the x-intercept, depicts the actual male proportion in birthing rates (0.5466667); however, although this line is slightly skewed to the right, the difference is not significant."
+  },
+  {
+    "objectID": "Permutationtest.html#conclusion",
+    "href": "Permutationtest.html#conclusion",
+    "title": "Permutation Test",
+    "section": "Conclusion",
+    "text": "Conclusion\nUltimately, although my code did prove that there is a slight inclination for the probability that women will birth male babies instead of females, with the P-Value being 0.1407, the null hypothesis that this is due to complete randomness, cannot confidently be rejected. There is not strong enough evidence against the null hypothesis; however, if I were to repeat this analysis, I would do another permutation test using variables for both the baby’s sex and the father’s X/Y ratio, for there may be a stronger relationship there. Currently, there is not much research on this correlation, so I’d most likely need to conduct my own research or wait until somebody believes that this imbalance in the probability of sexes is significant enough to explore, despite the P-Value."
+  },
+  {
+    "objectID": "Permutationtest.html#citation",
+    "href": "Permutationtest.html#citation",
+    "title": "Permutation Test",
+    "section": "Citation",
+    "text": "Citation\nI retrieved the original data from the MosaicData package within R. The data for this ‘Births’ package, however, originated from the National Vital Statistics System and exported to csv by Robert Kern."
   }
 ]
