@@ -11,7 +11,7 @@ website:
         menu: 
           - text: "California Fire Damage"
             href: calfiredamage.qmd
-          - text: "Employed Women"
+          - text: "Employed Gender"
             href: employedwomen.qmd
           - text: "'The Office' Text Analysis"
             href: textanalysis.qmd
