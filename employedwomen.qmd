@@ -1,5 +1,5 @@
 ---
-title: "Employed Women"
+title: "Employed Gender"
 description: |
   This is an analysis of the 'Employed Gender' data set from TidyTuesday. In this project, I depict the relationship between binary sex and percentages of employment in both full-time and part-time positions.
 author: Kandace Loualhati

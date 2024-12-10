@@ -23,7 +23,7 @@
   {
     "objectID": "employedwomen.html",
     "href": "employedwomen.html",
-    "title": "Employed Women",
+    "title": "Employed Gender",
     "section": "",
     "text": "# load in packages\nlibrary(tidyverse)\nlibrary(readr)\nlibrary(dplyr)\n# read in csv file\nemployed_gender &lt;- read.csv(\"employed_gender.csv\")\n# plot line plots depicting the difference in full-time workers (by gender, by year)\nggplot(employed_gender) +\n  geom_line(aes(x = year, y = full_time_female), color = \"hotpink\") +\n  geom_line(aes(x = year, y = full_time_male), color = \"blue\") +\n  labs(\n    x = \"Year\",\n    y = \"% of Full-Time Workers\",\n    title = \"Layered Line Plot of Male vs Female Full-Time Workers\"\n  )"
   },
@@ -156,28 +156,28 @@
   {
     "objectID": "employedwomen.html#code-for-full-time-workers",
     "href": "employedwomen.html#code-for-full-time-workers",
-    "title": "Employed Women",
+    "title": "Employed Gender",
     "section": "",
     "text": "# load in packages\nlibrary(tidyverse)\nlibrary(readr)\nlibrary(dplyr)\n# read in csv file\nemployed_gender &lt;- read.csv(\"employed_gender.csv\")\n# plot line plots depicting the difference in full-time workers (by gender, by year)\nggplot(employed_gender) +\n  geom_line(aes(x = year, y = full_time_female), color = \"hotpink\") +\n  geom_line(aes(x = year, y = full_time_male), color = \"blue\") +\n  labs(\n    x = \"Year\",\n    y = \"% of Full-Time Workers\",\n    title = \"Layered Line Plot of Male vs Female Full-Time Workers\"\n  )"
   },
   {
     "objectID": "employedwomen.html#code-for-part-time-workers",
     "href": "employedwomen.html#code-for-part-time-workers",
-    "title": "Employed Women",
+    "title": "Employed Gender",
     "section": "Code for Part-Time Workers",
     "text": "Code for Part-Time Workers\n\nggplot(employed_gender) +\n  geom_line(aes(x = year, y = part_time_female), color = \"hotpink\") +\n  geom_line(aes(x = year, y = part_time_male), color = \"blue\") +\n  labs(\n    x = \"Year\",\n    y = \"% of Part-Time Workers\",\n    title = \"Layered Line Plot of Male vs Female Part-Time Workers\"\n  )"
   },
   {
     "objectID": "employedwomen.html#analysis",
     "href": "employedwomen.html#analysis",
-    "title": "Employed Women",
+    "title": "Employed Gender",
     "section": "Analysis",
     "text": "Analysis\nThe most interesting aspect of these two graphs is the inversion which occurs for the ratio of full-time to part-time work by sex. This is most likely due to the historical struggle for self-identified women in earning and maintaining full-time positions. If I were to continue with this project, I would want to explore the relationship between maternity leave/motherhood and this domination of part-time work for women."
   },
   {
     "objectID": "employedwomen.html#citation",
     "href": "employedwomen.html#citation",
-    "title": "Employed Women",
+    "title": "Employed Gender",
     "section": "Citation",
     "text": "Citation\nI retrieved the original csv file from a Tidy Tuesday data set. The raw data originates from the Bureau of Labor Statistics and the Census Bureau about women in the workforce. Jon Harmon, an advanced R programming consultant, then manipulated and divided the data, motivated by March being Women’s History month."
   },
