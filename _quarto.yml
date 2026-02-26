@@ -39,7 +39,7 @@ website:
             href: projprop.pdf
       - text: "Resume"
         menu: 
-          - text: "Resume"
+          - text: "Read Me!"
             href: resume.pdf
 format:
   html:
