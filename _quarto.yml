@@ -7,7 +7,7 @@ website:
   navbar:
     left:
       - href: index.qmd
-      - text: "Projects"
+      - text: "Data Science Projects"
         menu: 
           - text: "California Fire Damage"
             href: calfiredamage.qmd
@@ -23,6 +23,11 @@ website:
             href: WebScraping.qmd
           - text: "Presentation"
             href: DS02Presentation.qmd
+        - href: index.qmd
+        - text: "Political Papers"
+          menu:
+          - text: "Between a Prince and a Prostitute"
+            href: between-a-prince-and-a-prostitute.pdf
 format:
   html:
     theme: minty
