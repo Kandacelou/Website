@@ -23,11 +23,10 @@ website:
             href: WebScraping.qmd
           - text: "Presentation"
             href: DS02Presentation.qmd
-      - href: index.qmd
       - text: "Political Papers"
         menu:
           - text: "Between a Prince and a Prostitute"
-            href: between-a-prince-and-a-prostitute.pdf
+            href: Between-a-Prince-and-a-Prostitute.pdf
 format:
   html:
     theme: minty
