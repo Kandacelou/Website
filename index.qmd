@@ -22,6 +22,10 @@ Languages: Bilingual in English and American Sign Language
 
 Relevant Courses Taken: Computer Science Using Python, Statistics, Cognitive Science, Cognitive Neuroscience, Music Cognition, Foundations of Data Science, California Politics and Policy
 
+## Contact Information {style="color: black"}
+
+Email: KandaceLou\@gmail.com
+
 ## Experience {style="color: black"}
 
 **Restaurant Manager**

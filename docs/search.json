@@ -397,5 +397,12 @@
     "title": "Permutation Test",
     "section": "Citation",
     "text": "Citation\nI retrieved the original data from the MosaicData package within R. The data for this ‘Births’ package, however, originated from the National Vital Statistics System and exported to csv by Robert Kern."
+  },
+  {
+    "objectID": "index.html#contact-information",
+    "href": "index.html#contact-information",
+    "title": "Kandace Loualhati",
+    "section": "Contact Information",
+    "text": "Contact Information\nEmail: KandaceLou@gmail.com"
   }
 ]
