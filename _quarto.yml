@@ -37,6 +37,10 @@ website:
             href: taboostroop.pdf
           - text: "Musical Stroop Project Proposal"
             href: projprop.pdf
+      - text: "Resume"
+        menu: 
+          - text: "Resume"
+            href: taboo.pdf
 format:
   html:
     theme: minty

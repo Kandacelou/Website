@@ -8,8 +8,6 @@ about:
   links:
   - text: Github
     href: https://github.com/Kandacelou
-  - text: Resume
-    href: resume.pdf
 ---
 
 ## About Me {style="color: black"}
@@ -23,10 +21,6 @@ Programming languages & Computer Literacy: Proficient in Python and R
 Languages: Bilingual in English and American Sign Language
 
 Relevant Courses Taken: Computer Science Using Python, Statistics, Cognitive Science, Cognitive Neuroscience, Music Cognition, Foundations of Data Science, California Politics and Policy
-
-## Contact Information {style="color: black"}
-
-Email: KandaceLou\@gmail.com
 
 ## Experience {style="color: black"}
 
