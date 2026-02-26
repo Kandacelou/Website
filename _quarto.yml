@@ -26,7 +26,7 @@ website:
       - text: "Political Papers"
         menu:
           - text: "Between a Prince and a Prostitute"
-            href: Between-a-Prince-and-a-Prostitute.pdf
+            href: princeandpros.pdf
 format:
   html:
     theme: minty
