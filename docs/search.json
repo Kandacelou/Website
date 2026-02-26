@@ -133,39 +133,60 @@
     "text": "Citation\nI retrieved the original data from an article published by Susan E. Voss in the National Library of Medicine. The starter code comes from Johanna S. Hardin, a Pomona College professor of mathematics and statistics, for a mini-project in her Foundations of Data Science course."
   },
   {
-    "objectID": "employedwomen.html",
-    "href": "employedwomen.html",
-    "title": "Employed Gender",
+    "objectID": "CPPaper.html",
+    "href": "CPPaper.html",
+    "title": "comparativepaper",
     "section": "",
-    "text": "# load in packages\nlibrary(tidyverse)\nlibrary(readr)\nlibrary(dplyr)\n# read in csv file\nemployed_gender &lt;- read.csv(\"employed_gender.csv\")\n# plot line plots depicting the difference in full-time workers (by gender, by year)\nggplot(employed_gender) +\n  geom_line(aes(x = year, y = full_time_female), color = \"hotpink\") +\n  geom_line(aes(x = year, y = full_time_male), color = \"blue\") +\n  labs(\n    x = \"Year\",\n    y = \"% of Full-Time Workers\",\n    title = \"Layered Line Plot of Male vs Female Full-Time Workers\"\n  )"
+    "text": "# Load in Packages\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(readr)\nlibrary(dplyr)\nlibrary(knitr)\nlibrary(openintro)\n\nLoading required package: airports\nLoading required package: cherryblossom\nLoading required package: usdata\n\nlibrary(mosaicData)\nlibrary(tibble)\n\n\n# Insert Data\nculture_data &lt;- tibble(\n  country = c(\"Hungary\", \"Turkey\"),\n  thrift = c(40.8, 36.4),\n  hard_work = c(66.2, 62.3)\n)\nculture_data\n\n# A tibble: 2 × 3\n  country thrift hard_work\n  &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;\n1 Hungary   40.8      66.2\n2 Turkey    36.4      62.3\n\n# Bar Plot\n# Pivot to long format\nculture_long &lt;- culture_data |&gt;\n  pivot_longer(cols = c(thrift, hard_work),\n               names_to = \"quality\",\n               values_to = \"percent\")\n\n# Plot\nggplot(culture_long, aes(x = country, y = percent, fill = quality)) +\n  geom_bar(stat = \"identity\", position = \"dodge\") +\n  labs(title = \"Importance of Thrift and Hard Work (By Country)\",\n       x = \"Country\",\n       y = \"% of Respondents\") +\n  scale_fill_manual(values = c(\"thrift\" = \"lightblue\", \"hard_work\" = \"steelblue\")) \n\n\n\n\n\n\n\n\n\neducation_data &lt;- tibble(\n  country = c(\"Hungary\", \"Turkey\"),\n  total = c(31.5, 20.9),\n  male = c(30, 22.8),\n  female = c(32.9, 19.1)\n)\neducation_data\n\n# A tibble: 2 × 4\n  country total  male female\n  &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;\n1 Hungary  31.5  30     32.9\n2 Turkey   20.9  22.8   19.1\n\neducation_long &lt;- education_data |&gt;\n  pivot_longer(cols = c(total, male, female),\n               names_to = \"demographic\",\n               values_to = \"percent\")\n\nggplot(education_long, aes(x = country, y = percent, fill = demographic)) +\n  geom_bar(stat = \"identity\", position = \"dodge\") +\n  labs(title = \"% of Population That at Least Completed Secondary Education (By Country)\",\n       x = \"Country\",\n       y = \"% of Population\") +\n  scale_fill_manual(values = c(\"total\" = \"lightgreen\", \"male\" = \"steelblue\", \"female\" = \"lightpink\"))"
   },
   {
-    "objectID": "employedwomen.html#code-for-full-time-workers",
-    "href": "employedwomen.html#code-for-full-time-workers",
-    "title": "Employed Gender",
+    "objectID": "WebScraping.html",
+    "href": "WebScraping.html",
+    "title": "Web Scraping",
     "section": "",
-    "text": "# load in packages\nlibrary(tidyverse)\nlibrary(readr)\nlibrary(dplyr)\n# read in csv file\nemployed_gender &lt;- read.csv(\"employed_gender.csv\")\n# plot line plots depicting the difference in full-time workers (by gender, by year)\nggplot(employed_gender) +\n  geom_line(aes(x = year, y = full_time_female), color = \"hotpink\") +\n  geom_line(aes(x = year, y = full_time_male), color = \"blue\") +\n  labs(\n    x = \"Year\",\n    y = \"% of Full-Time Workers\",\n    title = \"Layered Line Plot of Male vs Female Full-Time Workers\"\n  )"
+    "text": "library(tidyverse)\nlibrary(rvest)\nlibrary(purrr)\n\n\n# create a function that inputs a specific title for a Pomona College website and returns the facts listed on that specific URL\nweb_func &lt;- function(n) {\n  title &lt;- gsub(\" \", \"-\", n)\n  title &lt;- gsub(\"and\", \"-\", title)\n  title &lt;- gsub(\"@\", \"at\", title)\n  title &lt;- gsub(\"&\", \"-\", title)\n  title &lt;- gsub(\"-+\", \"-\", title)\n  html &lt;- paste0(\"https://www.pomona.edu/\", title)\n  page &lt;- read_html(html)\nquantity &lt;- page |&gt;\n  html_elements(\".text-7xl\") |&gt;\n  html_text()\nfacts &lt;- page |&gt;\n  html_elements(\".fact .text-xl\") |&gt;\n  html_text()\n# account for the sites that have no facts\nif (length(facts) == 0)\n  facts &lt;- \"N/A\"\nif (length(quantity) == 0)\n  quantity &lt;- \"N/A\"\n# return a tibble\ndata &lt;- tibble(\n  topic = n,\n  quantity = quantity,\n  facts = facts\n)\nreturn(data)\n}\n\n# map the different options available\ndif_titles &lt;- c(\"Admissions & Aid\", \"Academics\", \"Life @ Pomona\", \"News & Events\", \"About\", \"Alumni & Families\")\nmap(dif_titles, web_func) |&gt;\n  list_rbind()\n\n# A tibble: 22 × 3\n   topic            quantity facts                                              \n   &lt;chr&gt;            &lt;chr&gt;    &lt;chr&gt;                                              \n 1 Admissions & Aid 24%      \"of our students are the first in their family to …\n 2 Admissions & Aid 7:1      \"Student to faculty ratio on average\"              \n 3 Admissions & Aid 95%      \"live on campus all four years, creating a tight c…\n 4 Admissions & Aid 250+     \"student-run clubs and organizations to choose fro…\n 5 Academics        7:1      \"Student-to-faculty ratio\"                         \n 6 Academics        800+     \"Classes offered at Pomona each year\"              \n 7 Academics        51%      \"Students who conduct research with faculty\"       \n 8 Academics        48       \"Majors offered at Pomona College\"                 \n 9 Life @ Pomona    95%      \"of students live on campus all four years\"        \n10 Life @ Pomona    6,000+   \"students you can meet from the Claremont Colleges…\n# ℹ 12 more rows"
   },
   {
-    "objectID": "employedwomen.html#code-for-part-time-workers",
-    "href": "employedwomen.html#code-for-part-time-workers",
-    "title": "Employed Gender",
-    "section": "Code for Part-Time Workers",
-    "text": "Code for Part-Time Workers\n\nggplot(employed_gender) +\n  geom_line(aes(x = year, y = part_time_female), color = \"hotpink\") +\n  geom_line(aes(x = year, y = part_time_male), color = \"blue\") +\n  labs(\n    x = \"Year\",\n    y = \"% of Part-Time Workers\",\n    title = \"Layered Line Plot of Male vs Female Part-Time Workers\"\n  )"
+    "objectID": "WebScraping.html#web-scraping-the-pomona-college-home-page",
+    "href": "WebScraping.html#web-scraping-the-pomona-college-home-page",
+    "title": "Web Scraping",
+    "section": "",
+    "text": "library(tidyverse)\nlibrary(rvest)\nlibrary(purrr)\n\n\n# create a function that inputs a specific title for a Pomona College website and returns the facts listed on that specific URL\nweb_func &lt;- function(n) {\n  title &lt;- gsub(\" \", \"-\", n)\n  title &lt;- gsub(\"and\", \"-\", title)\n  title &lt;- gsub(\"@\", \"at\", title)\n  title &lt;- gsub(\"&\", \"-\", title)\n  title &lt;- gsub(\"-+\", \"-\", title)\n  html &lt;- paste0(\"https://www.pomona.edu/\", title)\n  page &lt;- read_html(html)\nquantity &lt;- page |&gt;\n  html_elements(\".text-7xl\") |&gt;\n  html_text()\nfacts &lt;- page |&gt;\n  html_elements(\".fact .text-xl\") |&gt;\n  html_text()\n# account for the sites that have no facts\nif (length(facts) == 0)\n  facts &lt;- \"N/A\"\nif (length(quantity) == 0)\n  quantity &lt;- \"N/A\"\n# return a tibble\ndata &lt;- tibble(\n  topic = n,\n  quantity = quantity,\n  facts = facts\n)\nreturn(data)\n}\n\n# map the different options available\ndif_titles &lt;- c(\"Admissions & Aid\", \"Academics\", \"Life @ Pomona\", \"News & Events\", \"About\", \"Alumni & Families\")\nmap(dif_titles, web_func) |&gt;\n  list_rbind()\n\n# A tibble: 22 × 3\n   topic            quantity facts                                              \n   &lt;chr&gt;            &lt;chr&gt;    &lt;chr&gt;                                              \n 1 Admissions & Aid 24%      \"of our students are the first in their family to …\n 2 Admissions & Aid 7:1      \"Student to faculty ratio on average\"              \n 3 Admissions & Aid 95%      \"live on campus all four years, creating a tight c…\n 4 Admissions & Aid 250+     \"student-run clubs and organizations to choose fro…\n 5 Academics        7:1      \"Student-to-faculty ratio\"                         \n 6 Academics        800+     \"Classes offered at Pomona each year\"              \n 7 Academics        51%      \"Students who conduct research with faculty\"       \n 8 Academics        48       \"Majors offered at Pomona College\"                 \n 9 Life @ Pomona    95%      \"of students live on campus all four years\"        \n10 Life @ Pomona    6,000+   \"students you can meet from the Claremont Colleges…\n# ℹ 12 more rows"
   },
   {
-    "objectID": "employedwomen.html#analysis",
-    "href": "employedwomen.html#analysis",
-    "title": "Employed Gender",
-    "section": "Analysis",
-    "text": "Analysis\nThe most interesting aspect of these two graphs is the inversion which occurs for the ratio of full-time to part-time work by sex. This is most likely due to the historical struggle for self-identified women in earning and maintaining full-time positions. If I were to continue with this project, I would want to explore the relationship between maternity leave/motherhood and this domination of part-time work for women."
+    "objectID": "WebScraping.html#checking-permission",
+    "href": "WebScraping.html#checking-permission",
+    "title": "Web Scraping",
+    "section": "Checking Permission",
+    "text": "Checking Permission\n\n# check permission\nlibrary(robotstxt)\npaths_allowed(\"https://www.pomona.edu\")\n\n[1] TRUE"
   },
   {
-    "objectID": "employedwomen.html#citation",
-    "href": "employedwomen.html#citation",
-    "title": "Employed Gender",
-    "section": "Citation",
-    "text": "Citation\nI retrieved the original csv file from a Tidy Tuesday data set. The raw data originates from the Bureau of Labor Statistics and the Census Bureau about women in the workforce. Jon Harmon, an advanced R programming consultant, then manipulated and divided the data, motivated by March being Women’s History month."
+    "objectID": "WebScraping.html#analysis-of-pomona-scraping",
+    "href": "WebScraping.html#analysis-of-pomona-scraping",
+    "title": "Web Scraping",
+    "section": "Analysis of Pomona Scraping",
+    "text": "Analysis of Pomona Scraping\nThis function would specifically be useful for high school or undergraduate seniors in their college search. By minimizing the information provided on a certain page, students would quickly be able to just pull the information they’re most interested in. For example, if this hypothetical person needed to know the student:faculty ratio or the average class size, all they would need to do is type in “Admissions & Aid” into the function to pull out this fact."
+  },
+  {
+    "objectID": "WebScraping.html#web-scraping-the-government-agencies-page",
+    "href": "WebScraping.html#web-scraping-the-government-agencies-page",
+    "title": "Web Scraping",
+    "section": "Web Scraping the Government Agencies Page",
+    "text": "Web Scraping the Government Agencies Page\n\n# create a function that takes a letter as input and returns all the U.S. government agencies that start with that letter\ngov_web_func &lt;- function(letter) {\n  if (letter == \"A\")\n    gov_html &lt;- paste0(\"https://www.usa.gov/agency-index#\", letter)\n    else\n    gov_html &lt;- paste0(\"https://www.usa.gov/agency-index/\", letter, \"#\", letter)\n  gov_page &lt;- read_html(gov_html)\n  agencies &lt;- gov_page |&gt;\n    html_elements(\"#block-views-block-federal-agencies-block-1 .usa-accordion__button\") |&gt;\n    html_text()\n  agen_list &lt;- tibble(\n    agencies = agencies |&gt;\n      str_remove(\"\\n\")\n  )\n  return(agen_list)\n}\nall_letters &lt;- setdiff(toupper(letters[1:23]), \"Q\")\nmap(all_letters, gov_web_func) |&gt;\n  list_rbind()\n\n# A tibble: 598 × 1\n   agencies                                                            \n   &lt;chr&gt;                                                               \n 1 \"AbilityOne Commission  \"                                           \n 2 \"Access Board  \"                                                    \n 3 \"Administration for Children and Families        (ACF)      \"       \n 4 \"Administration for Community Living         (ACL)      \"           \n 5 \"Administration for Native Americans        (ANA)      \"            \n 6 \"Administrative Conference of the United States        (ACUS)      \"\n 7 \"Administrative Office of the U.S. Courts  \"                        \n 8 \"Advisory Council on Historic Preservation        (ACHP)      \"     \n 9 \"Africa Command  \"                                                  \n10 \"African Development Foundation        (USADF)      \"               \n# ℹ 588 more rows"
+  },
+  {
+    "objectID": "WebScraping.html#checking-permission-1",
+    "href": "WebScraping.html#checking-permission-1",
+    "title": "Web Scraping",
+    "section": "Checking Permission",
+    "text": "Checking Permission\n\n# check permission\npaths_allowed(\"https://www.usa.gov\")\n\n[1] TRUE"
+  },
+  {
+    "objectID": "WebScraping.html#analysis-of-agency-scraping",
+    "href": "WebScraping.html#analysis-of-agency-scraping",
+    "title": "Web Scraping",
+    "section": "Analysis of Agency Scraping",
+    "text": "Analysis of Agency Scraping\nThis function would be useful for anybody interested in government agencies. If somebody needed to quickly find the name or contact information for “U.S. federal government agencies, departments, corporations, instrumentalities, [or] government-sponsored enterprises,” and only knew the letter in which it started, this function would quickly be able to retrieve this information."
   },
   {
     "objectID": "DS02Presentation.html#web-scraping",
@@ -200,7 +221,7 @@
     "href": "DS02Presentation.html#mapping-the-func",
     "title": "DS02 Presentation",
     "section": "Mapping the Func",
-    "text": "Mapping the Func\n\n# map the different options available\ndif_titles &lt;- c(\"Admissions & Aid\", \"Academics\", \"Life @ Pomona\", \"News & Events\", \"About\", \"Alumni & Families\")\nmap(dif_titles, web_func) |&gt;\n  list_rbind()\n\n# A tibble: 22 × 3\n   topic            quantity facts                                              \n   &lt;chr&gt;            &lt;chr&gt;    &lt;chr&gt;                                              \n 1 Admissions & Aid 20%      \"of our students are the first in their family to …\n 2 Admissions & Aid 8:1      \"Student to faculty ratio on average\"              \n 3 Admissions & Aid 94%      \"live on campus all four years, creating a tight c…\n 4 Admissions & Aid 250+     \"student-run clubs and organizations to choose fro…\n 5 Academics        8:1      \"Student-to-faculty ratio\"                         \n 6 Academics        600+     \"Classes offered at Pomona each year\"              \n 7 Academics        52%      \"Students who conduct research with faculty\"       \n 8 Academics        48       \"Majors offered at Pomona College\"                 \n 9 Life @ Pomona    94%      \"of students live on campus all four years\"        \n10 Life @ Pomona    6,000+   \"students you can meet from the Claremont Colleges…\n# ℹ 12 more rows"
+    "text": "Mapping the Func\n\n# map the different options available\ndif_titles &lt;- c(\"Admissions & Aid\", \"Academics\", \"Life @ Pomona\", \"News & Events\", \"About\", \"Alumni & Families\")\nmap(dif_titles, web_func) |&gt;\n  list_rbind()\n\n# A tibble: 22 × 3\n   topic            quantity facts                                              \n   &lt;chr&gt;            &lt;chr&gt;    &lt;chr&gt;                                              \n 1 Admissions & Aid 24%      \"of our students are the first in their family to …\n 2 Admissions & Aid 7:1      \"Student to faculty ratio on average\"              \n 3 Admissions & Aid 95%      \"live on campus all four years, creating a tight c…\n 4 Admissions & Aid 250+     \"student-run clubs and organizations to choose fro…\n 5 Academics        7:1      \"Student-to-faculty ratio\"                         \n 6 Academics        800+     \"Classes offered at Pomona each year\"              \n 7 Academics        51%      \"Students who conduct research with faculty\"       \n 8 Academics        48       \"Majors offered at Pomona College\"                 \n 9 Life @ Pomona    95%      \"of students live on campus all four years\"        \n10 Life @ Pomona    6,000+   \"students you can meet from the Claremont Colleges…\n# ℹ 12 more rows"
   },
   {
     "objectID": "DS02Presentation.html#second-function",
@@ -221,56 +242,42 @@
     "href": "DS02Presentation.html#mapping-the-func-1",
     "title": "DS02 Presentation",
     "section": "Mapping the Func",
-    "text": "Mapping the Func\n\nall_letters &lt;- setdiff(toupper(letters[1:23]), \"Q\")\nmap(all_letters, gov_web_func) |&gt;\n  list_rbind()\n\n# A tibble: 602 × 1\n   agencies                                                            \n   &lt;chr&gt;                                                               \n 1 \"AbilityOne Commission  \"                                           \n 2 \"Access Board  \"                                                    \n 3 \"Administration for Children and Families        (ACF)      \"       \n 4 \"Administration for Community Living         (ACL)      \"           \n 5 \"Administration for Native Americans        (ANA)      \"            \n 6 \"Administrative Conference of the United States        (ACUS)      \"\n 7 \"Administrative Office of the U.S. Courts  \"                        \n 8 \"Advisory Council on Historic Preservation        (ACHP)      \"     \n 9 \"Africa Command  \"                                                  \n10 \"African Development Foundation        (USADF)      \"               \n# ℹ 592 more rows"
+    "text": "Mapping the Func\n\nall_letters &lt;- setdiff(toupper(letters[1:23]), \"Q\")\nmap(all_letters, gov_web_func) |&gt;\n  list_rbind()\n\n# A tibble: 598 × 1\n   agencies                                                            \n   &lt;chr&gt;                                                               \n 1 \"AbilityOne Commission  \"                                           \n 2 \"Access Board  \"                                                    \n 3 \"Administration for Children and Families        (ACF)      \"       \n 4 \"Administration for Community Living         (ACL)      \"           \n 5 \"Administration for Native Americans        (ANA)      \"            \n 6 \"Administrative Conference of the United States        (ACUS)      \"\n 7 \"Administrative Office of the U.S. Courts  \"                        \n 8 \"Advisory Council on Historic Preservation        (ACHP)      \"     \n 9 \"Africa Command  \"                                                  \n10 \"African Development Foundation        (USADF)      \"               \n# ℹ 588 more rows"
   },
   {
-    "objectID": "WebScraping.html",
-    "href": "WebScraping.html",
-    "title": "Web Scraping",
+    "objectID": "employedwomen.html",
+    "href": "employedwomen.html",
+    "title": "Employed Gender",
     "section": "",
-    "text": "library(tidyverse)\nlibrary(rvest)\nlibrary(purrr)\n\n\n# create a function that inputs a specific title for a Pomona College website and returns the facts listed on that specific URL\nweb_func &lt;- function(n) {\n  title &lt;- gsub(\" \", \"-\", n)\n  title &lt;- gsub(\"and\", \"-\", title)\n  title &lt;- gsub(\"@\", \"at\", title)\n  title &lt;- gsub(\"&\", \"-\", title)\n  title &lt;- gsub(\"-+\", \"-\", title)\n  html &lt;- paste0(\"https://www.pomona.edu/\", title)\n  page &lt;- read_html(html)\nquantity &lt;- page |&gt;\n  html_elements(\".text-7xl\") |&gt;\n  html_text()\nfacts &lt;- page |&gt;\n  html_elements(\".fact .text-xl\") |&gt;\n  html_text()\n# account for the sites that have no facts\nif (length(facts) == 0)\n  facts &lt;- \"N/A\"\nif (length(quantity) == 0)\n  quantity &lt;- \"N/A\"\n# return a tibble\ndata &lt;- tibble(\n  topic = n,\n  quantity = quantity,\n  facts = facts\n)\nreturn(data)\n}\n\n# map the different options available\ndif_titles &lt;- c(\"Admissions & Aid\", \"Academics\", \"Life @ Pomona\", \"News & Events\", \"About\", \"Alumni & Families\")\nmap(dif_titles, web_func) |&gt;\n  list_rbind()\n\n# A tibble: 22 × 3\n   topic            quantity facts                                              \n   &lt;chr&gt;            &lt;chr&gt;    &lt;chr&gt;                                              \n 1 Admissions & Aid 20%      \"of our students are the first in their family to …\n 2 Admissions & Aid 8:1      \"Student to faculty ratio on average\"              \n 3 Admissions & Aid 94%      \"live on campus all four years, creating a tight c…\n 4 Admissions & Aid 250+     \"student-run clubs and organizations to choose fro…\n 5 Academics        8:1      \"Student-to-faculty ratio\"                         \n 6 Academics        600+     \"Classes offered at Pomona each year\"              \n 7 Academics        52%      \"Students who conduct research with faculty\"       \n 8 Academics        48       \"Majors offered at Pomona College\"                 \n 9 Life @ Pomona    94%      \"of students live on campus all four years\"        \n10 Life @ Pomona    6,000+   \"students you can meet from the Claremont Colleges…\n# ℹ 12 more rows"
+    "text": "# load in packages\nlibrary(tidyverse)\nlibrary(readr)\nlibrary(dplyr)\n# read in csv file\nemployed_gender &lt;- read.csv(\"employed_gender.csv\")\n# plot line plots depicting the difference in full-time workers (by gender, by year)\nggplot(employed_gender) +\n  geom_line(aes(x = year, y = full_time_female), color = \"hotpink\") +\n  geom_line(aes(x = year, y = full_time_male), color = \"blue\") +\n  labs(\n    x = \"Year\",\n    y = \"% of Full-Time Workers\",\n    title = \"Layered Line Plot of Male vs Female Full-Time Workers\"\n  )"
   },
   {
-    "objectID": "WebScraping.html#web-scraping-the-pomona-college-home-page",
-    "href": "WebScraping.html#web-scraping-the-pomona-college-home-page",
-    "title": "Web Scraping",
+    "objectID": "employedwomen.html#code-for-full-time-workers",
+    "href": "employedwomen.html#code-for-full-time-workers",
+    "title": "Employed Gender",
     "section": "",
-    "text": "library(tidyverse)\nlibrary(rvest)\nlibrary(purrr)\n\n\n# create a function that inputs a specific title for a Pomona College website and returns the facts listed on that specific URL\nweb_func &lt;- function(n) {\n  title &lt;- gsub(\" \", \"-\", n)\n  title &lt;- gsub(\"and\", \"-\", title)\n  title &lt;- gsub(\"@\", \"at\", title)\n  title &lt;- gsub(\"&\", \"-\", title)\n  title &lt;- gsub(\"-+\", \"-\", title)\n  html &lt;- paste0(\"https://www.pomona.edu/\", title)\n  page &lt;- read_html(html)\nquantity &lt;- page |&gt;\n  html_elements(\".text-7xl\") |&gt;\n  html_text()\nfacts &lt;- page |&gt;\n  html_elements(\".fact .text-xl\") |&gt;\n  html_text()\n# account for the sites that have no facts\nif (length(facts) == 0)\n  facts &lt;- \"N/A\"\nif (length(quantity) == 0)\n  quantity &lt;- \"N/A\"\n# return a tibble\ndata &lt;- tibble(\n  topic = n,\n  quantity = quantity,\n  facts = facts\n)\nreturn(data)\n}\n\n# map the different options available\ndif_titles &lt;- c(\"Admissions & Aid\", \"Academics\", \"Life @ Pomona\", \"News & Events\", \"About\", \"Alumni & Families\")\nmap(dif_titles, web_func) |&gt;\n  list_rbind()\n\n# A tibble: 22 × 3\n   topic            quantity facts                                              \n   &lt;chr&gt;            &lt;chr&gt;    &lt;chr&gt;                                              \n 1 Admissions & Aid 20%      \"of our students are the first in their family to …\n 2 Admissions & Aid 8:1      \"Student to faculty ratio on average\"              \n 3 Admissions & Aid 94%      \"live on campus all four years, creating a tight c…\n 4 Admissions & Aid 250+     \"student-run clubs and organizations to choose fro…\n 5 Academics        8:1      \"Student-to-faculty ratio\"                         \n 6 Academics        600+     \"Classes offered at Pomona each year\"              \n 7 Academics        52%      \"Students who conduct research with faculty\"       \n 8 Academics        48       \"Majors offered at Pomona College\"                 \n 9 Life @ Pomona    94%      \"of students live on campus all four years\"        \n10 Life @ Pomona    6,000+   \"students you can meet from the Claremont Colleges…\n# ℹ 12 more rows"
+    "text": "# load in packages\nlibrary(tidyverse)\nlibrary(readr)\nlibrary(dplyr)\n# read in csv file\nemployed_gender &lt;- read.csv(\"employed_gender.csv\")\n# plot line plots depicting the difference in full-time workers (by gender, by year)\nggplot(employed_gender) +\n  geom_line(aes(x = year, y = full_time_female), color = \"hotpink\") +\n  geom_line(aes(x = year, y = full_time_male), color = \"blue\") +\n  labs(\n    x = \"Year\",\n    y = \"% of Full-Time Workers\",\n    title = \"Layered Line Plot of Male vs Female Full-Time Workers\"\n  )"
   },
   {
-    "objectID": "WebScraping.html#checking-permission",
-    "href": "WebScraping.html#checking-permission",
-    "title": "Web Scraping",
-    "section": "Checking Permission",
-    "text": "Checking Permission\n\n# check permission\nlibrary(robotstxt)\npaths_allowed(\"https://www.pomona.edu\")\n\n[1] TRUE"
+    "objectID": "employedwomen.html#code-for-part-time-workers",
+    "href": "employedwomen.html#code-for-part-time-workers",
+    "title": "Employed Gender",
+    "section": "Code for Part-Time Workers",
+    "text": "Code for Part-Time Workers\n\nggplot(employed_gender) +\n  geom_line(aes(x = year, y = part_time_female), color = \"hotpink\") +\n  geom_line(aes(x = year, y = part_time_male), color = \"blue\") +\n  labs(\n    x = \"Year\",\n    y = \"% of Part-Time Workers\",\n    title = \"Layered Line Plot of Male vs Female Part-Time Workers\"\n  )"
   },
   {
-    "objectID": "WebScraping.html#analysis-of-pomona-scraping",
-    "href": "WebScraping.html#analysis-of-pomona-scraping",
-    "title": "Web Scraping",
-    "section": "Analysis of Pomona Scraping",
-    "text": "Analysis of Pomona Scraping\nThis function would specifically be useful for high school or undergraduate seniors in their college search. By minimizing the information provided on a certain page, students would quickly be able to just pull the information they’re most interested in. For example, if this hypothetical person needed to know the student:faculty ratio or the average class size, all they would need to do is type in “Admissions & Aid” into the function to pull out this fact."
+    "objectID": "employedwomen.html#analysis",
+    "href": "employedwomen.html#analysis",
+    "title": "Employed Gender",
+    "section": "Analysis",
+    "text": "Analysis\nThe most interesting aspect of these two graphs is the inversion which occurs for the ratio of full-time to part-time work by sex. This is most likely due to the historical struggle for self-identified women in earning and maintaining full-time positions. If I were to continue with this project, I would want to explore the relationship between maternity leave/motherhood and this domination of part-time work for women."
   },
   {
-    "objectID": "WebScraping.html#web-scraping-the-government-agencies-page",
-    "href": "WebScraping.html#web-scraping-the-government-agencies-page",
-    "title": "Web Scraping",
-    "section": "Web Scraping the Government Agencies Page",
-    "text": "Web Scraping the Government Agencies Page\n\n# create a function that takes a letter as input and returns all the U.S. government agencies that start with that letter\ngov_web_func &lt;- function(letter) {\n  if (letter == \"A\")\n    gov_html &lt;- paste0(\"https://www.usa.gov/agency-index#\", letter)\n    else\n    gov_html &lt;- paste0(\"https://www.usa.gov/agency-index/\", letter, \"#\", letter)\n  gov_page &lt;- read_html(gov_html)\n  agencies &lt;- gov_page |&gt;\n    html_elements(\"#block-views-block-federal-agencies-block-1 .usa-accordion__button\") |&gt;\n    html_text()\n  agen_list &lt;- tibble(\n    agencies = agencies |&gt;\n      str_remove(\"\\n\")\n  )\n  return(agen_list)\n}\nall_letters &lt;- setdiff(toupper(letters[1:23]), \"Q\")\nmap(all_letters, gov_web_func) |&gt;\n  list_rbind()\n\n# A tibble: 602 × 1\n   agencies                                                            \n   &lt;chr&gt;                                                               \n 1 \"AbilityOne Commission  \"                                           \n 2 \"Access Board  \"                                                    \n 3 \"Administration for Children and Families        (ACF)      \"       \n 4 \"Administration for Community Living         (ACL)      \"           \n 5 \"Administration for Native Americans        (ANA)      \"            \n 6 \"Administrative Conference of the United States        (ACUS)      \"\n 7 \"Administrative Office of the U.S. Courts  \"                        \n 8 \"Advisory Council on Historic Preservation        (ACHP)      \"     \n 9 \"Africa Command  \"                                                  \n10 \"African Development Foundation        (USADF)      \"               \n# ℹ 592 more rows"
-  },
-  {
-    "objectID": "WebScraping.html#checking-permission-1",
-    "href": "WebScraping.html#checking-permission-1",
-    "title": "Web Scraping",
-    "section": "Checking Permission",
-    "text": "Checking Permission\n\n# check permission\npaths_allowed(\"https://www.usa.gov\")\n\n[1] TRUE"
-  },
-  {
-    "objectID": "WebScraping.html#analysis-of-agency-scraping",
-    "href": "WebScraping.html#analysis-of-agency-scraping",
-    "title": "Web Scraping",
-    "section": "Analysis of Agency Scraping",
-    "text": "Analysis of Agency Scraping\nThis function would be useful for anybody interested in government agencies. If somebody needed to quickly find the name or contact information for “U.S. federal government agencies, departments, corporations, instrumentalities, [or] government-sponsored enterprises,” and only knew the letter in which it started, this function would quickly be able to retrieve this information."
+    "objectID": "employedwomen.html#citation",
+    "href": "employedwomen.html#citation",
+    "title": "Employed Gender",
+    "section": "Citation",
+    "text": "Citation\nI retrieved the original csv file from a Tidy Tuesday data set. The raw data originates from the Bureau of Labor Statistics and the Census Bureau about women in the workforce. Jon Harmon, an advanced R programming consultant, then manipulated and divided the data, motivated by March being Women’s History month."
   },
   {
     "objectID": "calfiredamage.html",
@@ -390,12 +397,5 @@
     "title": "Permutation Test",
     "section": "Citation",
     "text": "Citation\nI retrieved the original data from the MosaicData package within R. The data for this ‘Births’ package, however, originated from the National Vital Statistics System and exported to csv by Robert Kern."
-  },
-  {
-    "objectID": "CPPaper.html",
-    "href": "CPPaper.html",
-    "title": "comparativepaper",
-    "section": "",
-    "text": "# Load in Packages\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(readr)\nlibrary(dplyr)\nlibrary(knitr)\nlibrary(openintro)\n\nLoading required package: airports\nLoading required package: cherryblossom\nLoading required package: usdata\n\nlibrary(mosaicData)\nlibrary(tibble)\n\n\n# Insert Data\nculture_data &lt;- tibble(\n  country = c(\"Hungary\", \"Turkey\"),\n  thrift = c(40.8, 36.4),\n  hard_work = c(66.2, 62.3)\n)\nculture_data\n\n# A tibble: 2 × 3\n  country thrift hard_work\n  &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;\n1 Hungary   40.8      66.2\n2 Turkey    36.4      62.3\n\n# Bar Plot\n# Pivot to long format\nculture_long &lt;- culture_data |&gt;\n  pivot_longer(cols = c(thrift, hard_work),\n               names_to = \"quality\",\n               values_to = \"percent\")\n\n# Plot\nggplot(culture_long, aes(x = country, y = percent, fill = quality)) +\n  geom_bar(stat = \"identity\", position = \"dodge\") +\n  labs(title = \"Importance of Thrift and Hard Work (By Country)\",\n       x = \"Country\",\n       y = \"% of Respondents\") +\n  scale_fill_manual(values = c(\"thrift\" = \"lightblue\", \"hard_work\" = \"steelblue\")) \n\n\n\n\n\n\n\n\n\neducation_data &lt;- tibble(\n  country = c(\"Hungary\", \"Turkey\"),\n  total = c(31.5, 20.9),\n  male = c(30, 22.8),\n  female = c(32.9, 19.1)\n)\neducation_data\n\n# A tibble: 2 × 4\n  country total  male female\n  &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;\n1 Hungary  31.5  30     32.9\n2 Turkey   20.9  22.8   19.1\n\neducation_long &lt;- education_data |&gt;\n  pivot_longer(cols = c(total, male, female),\n               names_to = \"demographic\",\n               values_to = \"percent\")\n\nggplot(education_long, aes(x = country, y = percent, fill = demographic)) +\n  geom_bar(stat = \"identity\", position = \"dodge\") +\n  labs(title = \"% of Population That at Least Completed Secondary Education (By Country)\",\n       x = \"Country\",\n       y = \"% of Population\") +\n  scale_fill_manual(values = c(\"total\" = \"lightgreen\", \"male\" = \"steelblue\", \"female\" = \"lightpink\"))"
   }
 ]
