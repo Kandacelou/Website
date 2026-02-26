@@ -40,7 +40,7 @@ website:
       - text: "Resume"
         menu: 
           - text: "Resume"
-            href: taboo.pdf
+            href: resume.pdf
 format:
   html:
     theme: minty
