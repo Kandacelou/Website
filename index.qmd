@@ -8,6 +8,8 @@ about:
   links:
   - text: Github
     href: https://github.com/Kandacelou
+  - text: Resume
+    href: resume.pdf
 ---
 
 ## About Me {style="color: black"}
