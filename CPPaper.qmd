@@ -1,0 +1,63 @@
+---
+title: "comparativepaper"
+---
+
+![]()
+
+```{r}
+# Load in Packages
+library(tidyverse)
+library(readr)
+library(dplyr)
+library(knitr)
+library(openintro)
+library(mosaicData)
+library(tibble)
+```
+
+```{r}
+# Insert Data
+culture_data <- tibble(
+  country = c("Hungary", "Turkey"),
+  thrift = c(40.8, 36.4),
+  hard_work = c(66.2, 62.3)
+)
+culture_data
+
+# Bar Plot
+# Pivot to long format
+culture_long <- culture_data |>
+  pivot_longer(cols = c(thrift, hard_work),
+               names_to = "quality",
+               values_to = "percent")
+
+# Plot
+ggplot(culture_long, aes(x = country, y = percent, fill = quality)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(title = "Importance of Thrift and Hard Work (By Country)",
+       x = "Country",
+       y = "% of Respondents") +
+  scale_fill_manual(values = c("thrift" = "lightblue", "hard_work" = "steelblue")) 
+```
+
+```{r}
+education_data <- tibble(
+  country = c("Hungary", "Turkey"),
+  total = c(31.5, 20.9),
+  male = c(30, 22.8),
+  female = c(32.9, 19.1)
+)
+education_data
+
+education_long <- education_data |>
+  pivot_longer(cols = c(total, male, female),
+               names_to = "demographic",
+               values_to = "percent")
+
+ggplot(education_long, aes(x = country, y = percent, fill = demographic)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(title = "% of Population That at Least Completed Secondary Education (By Country)",
+       x = "Country",
+       y = "% of Population") +
+  scale_fill_manual(values = c("total" = "lightgreen", "male" = "steelblue", "female" = "lightpink")) 
+```

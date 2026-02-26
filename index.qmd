@@ -12,7 +12,7 @@ about:
 
 ## About Me {style="color: black"}
 
-Hi! My name is Kandace Loualhati. I'm an undergraduate at Pomona College (class of 2027) who's double majoring in Politics and Cognitive Science as well as minoring in Data Science. My ultimate goal is to become a data scientist, specializing in statistical analysis and data mining.
+Hi! My name is Kandace Loualhati. I'm an undergraduate at Pomona College (class of 2027) who's double majoring in Politics and Cognitive Science as well as minoring in Data Science. My ultimate goal is to become a data scientist, specializing in statistical analysis and data mining, or specialist for local government.
 
 ## Skills {style="color: black"}
 
@@ -20,14 +20,18 @@ Programming languages & Computer Literacy: Proficient in Python and R
 
 Languages: Bilingual in English and American Sign Language
 
-Relevant Courses Taken: Computer Science Using Python, Statistics, Cognitive Science, Foundations of Data Science
+Relevant Courses Taken: Computer Science Using Python, Statistics, Cognitive Science, Cognitive Neuroscience, Music Cognition, Foundations of Data Science, California Politics and Policy
 
 ## Experience {style="color: black"}
 
+**Restaurant Manager**
+
+Managed a local restaurant, Stonefire Grill, from January 2025 until March 2026; ultimately, being employed with the company for three years while as an undergraduate, and working full-time while being a full-time student for a little over a year. There, I was able to minimize business costs by analyzing labor statistics on Toast as well as our Daily Labor Tool, maximize profit by upselling, building relationships with guests, and coaching staff, and learn how to predict business based on previous week/year trends.
+
 **Research**
 
-Served as a researcher in Computational Chemistry and Novel Drug Design under the guidance of Roberto A. Garza-Lopez
+Served as a researcher in Computational Chemistry and Novel Drug Design under the guidance of Roberto A. Garza-Lopez.
 
 **College Adviser**
 
-Assisted students with the college application process and provided academic advising to students
+Assisted students with the college application process and provided academic advising to students.

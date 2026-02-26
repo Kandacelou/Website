@@ -18,7 +18,7 @@ format:
     css: styles.css
 ---
 
-## Introduction 
+## Introduction
 
 For this project, I am planning to recreate the Figure 1 graph from the National Library of Medicine. First, I am going to pull a dataset from SQL and read it into R to further manipulate and graph using ggplot. I plan on joining the Measurements dataset with the PI_Info dataset using their "Identifier" column and then using that new "ear_df" dataframe to select the specific information used in the original graph. From what I can see currently, the plot is a line-plot whose color is based on a combination of specific variables, so I will use that knowledge in my recreation. After the first half of the assignment is finished, I will further limit the data and create a new graph based on the "Age" variable from the Subjects dataset.
 

@@ -305,28 +305,28 @@
     "href": "index.html",
     "title": "Kandace Loualhati",
     "section": "",
-    "text": "Hi! My name is Kandace Loualhati. I’m an undergraduate at Pomona College (class of 2027) who’s double majoring in Politics and Cognitive Science as well as minoring in Data Science. My ultimate goal is to become a data scientist, specializing in statistical analysis and data mining."
+    "text": "Hi! My name is Kandace Loualhati. I’m an undergraduate at Pomona College (class of 2027) who’s double majoring in Politics and Cognitive Science as well as minoring in Data Science. My ultimate goal is to become a data scientist, specializing in statistical analysis and data mining, or specialist for local government."
   },
   {
     "objectID": "index.html#about-me",
     "href": "index.html#about-me",
     "title": "Kandace Loualhati",
     "section": "",
-    "text": "Hi! My name is Kandace Loualhati. I’m an undergraduate at Pomona College (class of 2027) who’s double majoring in Politics and Cognitive Science as well as minoring in Data Science. My ultimate goal is to become a data scientist, specializing in statistical analysis and data mining."
+    "text": "Hi! My name is Kandace Loualhati. I’m an undergraduate at Pomona College (class of 2027) who’s double majoring in Politics and Cognitive Science as well as minoring in Data Science. My ultimate goal is to become a data scientist, specializing in statistical analysis and data mining, or specialist for local government."
   },
   {
     "objectID": "index.html#skills",
     "href": "index.html#skills",
     "title": "Kandace Loualhati",
     "section": "Skills",
-    "text": "Skills\nProgramming languages & Computer Literacy: Proficient in Python and R\nLanguages: Bilingual in English and American Sign Language\nRelevant Courses Taken: Computer Science Using Python, Statistics, Cognitive Science, Foundations of Data Science"
+    "text": "Skills\nProgramming languages & Computer Literacy: Proficient in Python and R\nLanguages: Bilingual in English and American Sign Language\nRelevant Courses Taken: Computer Science Using Python, Statistics, Cognitive Science, Cognitive Neuroscience, Music Cognition, Foundations of Data Science, California Politics and Policy"
   },
   {
     "objectID": "index.html#experience",
     "href": "index.html#experience",
     "title": "Kandace Loualhati",
     "section": "Experience",
-    "text": "Experience\nResearch\nServed as a researcher in Computational Chemistry and Novel Drug Design under the guidance of Roberto A. Garza-Lopez\nCollege Adviser\nAssisted students with the college application process and provided academic advising to students"
+    "text": "Experience\nRestaurant Manager\nManaged a local restaurant, Stonefire Grill, from January 2025 until March 2026; ultimately, being employed with the company for three years while as an undergraduate, and working full-time while being a full-time student for a little over a year. There, I was able to minimize business costs by analyzing labor statistics on Toast as well as our Daily Labor Tool, maximize profit by upselling, building relationships with guests, and coaching staff, and learn how to predict business based on previous week/year trends.\nResearch\nServed as a researcher in Computational Chemistry and Novel Drug Design under the guidance of Roberto A. Garza-Lopez.\nCollege Adviser\nAssisted students with the college application process and provided academic advising to students."
   },
   {
     "objectID": "Permutationtest.html",
@@ -390,5 +390,12 @@
     "title": "Permutation Test",
     "section": "Citation",
     "text": "Citation\nI retrieved the original data from the MosaicData package within R. The data for this ‘Births’ package, however, originated from the National Vital Statistics System and exported to csv by Robert Kern."
+  },
+  {
+    "objectID": "CPPaper.html",
+    "href": "CPPaper.html",
+    "title": "comparativepaper",
+    "section": "",
+    "text": "# Load in Packages\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(readr)\nlibrary(dplyr)\nlibrary(knitr)\nlibrary(openintro)\n\nLoading required package: airports\nLoading required package: cherryblossom\nLoading required package: usdata\n\nlibrary(mosaicData)\nlibrary(tibble)\n\n\n# Insert Data\nculture_data &lt;- tibble(\n  country = c(\"Hungary\", \"Turkey\"),\n  thrift = c(40.8, 36.4),\n  hard_work = c(66.2, 62.3)\n)\nculture_data\n\n# A tibble: 2 × 3\n  country thrift hard_work\n  &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;\n1 Hungary   40.8      66.2\n2 Turkey    36.4      62.3\n\n# Bar Plot\n# Pivot to long format\nculture_long &lt;- culture_data |&gt;\n  pivot_longer(cols = c(thrift, hard_work),\n               names_to = \"quality\",\n               values_to = \"percent\")\n\n# Plot\nggplot(culture_long, aes(x = country, y = percent, fill = quality)) +\n  geom_bar(stat = \"identity\", position = \"dodge\") +\n  labs(title = \"Importance of Thrift and Hard Work (By Country)\",\n       x = \"Country\",\n       y = \"% of Respondents\") +\n  scale_fill_manual(values = c(\"thrift\" = \"lightblue\", \"hard_work\" = \"steelblue\")) \n\n\n\n\n\n\n\n\n\neducation_data &lt;- tibble(\n  country = c(\"Hungary\", \"Turkey\"),\n  total = c(31.5, 20.9),\n  male = c(30, 22.8),\n  female = c(32.9, 19.1)\n)\neducation_data\n\n# A tibble: 2 × 4\n  country total  male female\n  &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;\n1 Hungary  31.5  30     32.9\n2 Turkey   20.9  22.8   19.1\n\neducation_long &lt;- education_data |&gt;\n  pivot_longer(cols = c(total, male, female),\n               names_to = \"demographic\",\n               values_to = \"percent\")\n\nggplot(education_long, aes(x = country, y = percent, fill = demographic)) +\n  geom_bar(stat = \"identity\", position = \"dodge\") +\n  labs(title = \"% of Population That at Least Completed Secondary Education (By Country)\",\n       x = \"Country\",\n       y = \"% of Population\") +\n  scale_fill_manual(values = c(\"total\" = \"lightgreen\", \"male\" = \"steelblue\", \"female\" = \"lightpink\"))"
   }
 ]
