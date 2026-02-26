@@ -27,6 +27,16 @@ website:
         menu:
           - text: "Between a Prince and a Prostitute"
             href: princeandpros.pdf
+          - text: "We, The Sheep"
+            href: wethesheep.pdf
+          - text: "Democratic Realism"
+            href: demoreal.pdf
+      - text: "Cognitive Neuroscience Projects"
+        menu: 
+          - text: "Taboo Stroop Effect"
+            href: taboostroop.pdf
+          - text: "Musical Stroop Project Proposal"
+            href: projprop.pdf
 format:
   html:
     theme: minty
