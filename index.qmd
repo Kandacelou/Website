@@ -1,5 +1,5 @@
 ---
-image: newphoto.JPG
+image: newnew.HEIC
 toc: true
 about: 
   template: jolla
