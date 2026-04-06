@@ -12,7 +12,7 @@ about:
 
 ## About Me {style="color: black"}
 
-Hi! My name is Kandace Loualhati. I'm an undergraduate at Pomona College (class of 2027) who's double majoring in Politics and Cognitive Science as well as minoring in Data Science. My ultimate goal is to become a data scientist, specializing in statistical analysis and data mining, or specialist for local government.
+Hi! My name is Kandace Loualhati. I'm an undergraduate at Pomona College (class of 2027) who's double majoring in Politics and Cognitive Science as well as minoring in Data Science. My ultimate goal is to become a data scientist, specializing in statistical analysis and data mining, or political consultant.
 
 ## Skills {style="color: black"}
 
