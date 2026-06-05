@@ -44,7 +44,7 @@ website:
       - text: "Resume"
         menu: 
           - text: "Read Me!"
-            href: resume.pdf
+            href: LoualhatiResume2026.pdf
 format:
   html:
     theme: minty
